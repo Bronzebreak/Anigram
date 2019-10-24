@@ -17,7 +17,8 @@ public class S_Path : MonoBehaviour
     private DoTweenType doTweenType = DoTweenType.MovementOneWay;
     private enum DoTweenType 
     { 
-        MovementOneWay
+        MovementOneWay,
+        MovementTwoWay
     };
     // Start is called before the first frame update
     void Start()
@@ -28,12 +29,23 @@ public class S_Path : MonoBehaviour
             {
                 targetLocation = transform.position;
             }
+            transform.DOMove(targetLocation, moveDuration).SetEase(moveEase);
+        }
+        if (doTweenType == DoTweenType.MovementTwoWay)
+        {
+            if (targetLocation == Vector3.zero)
+            {
+                targetLocation = transform.position;
+            }
+            StartCoroutine(MovementWithBothWays());
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator MovementWithBothWays()
     {
-        
+        Vector3 originalLocation = transform.position;
+        transform.DOMove(targetLocation, moveDuration).SetEase(moveEase);
+        yield return new WaitForSeconds(moveDuration);
+        transform.DOMove(originalLocation, moveDuration).SetEase(moveEase);
     }
 }

@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Liminal.Core;
+using Liminal.SDK.VR.Avatars;
 using Liminal.SDK.VR.Avatars.Extensions;
 
 public class Overlord : MonoBehaviour
 {
     #region Variables
-
     //References
-    public GameObject avatarRef;
+    public VRAvatar avatarRef;
+    public GazeInput gazeRef;
 
     //Breathing
     public float breathDelay;
@@ -21,10 +22,12 @@ public class Overlord : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        avatarRef = GameObject.FindWithTag("Player");
         breathDelay = .3f;
         inhaleTime = 2f;
         exhaleTime = 4f;
+        gazeRef = avatarRef.GetComponent<GazeInput>();
+        gazeRef.HoverDelay = breathDelay;
+        gazeRef.HoverDuration = inhaleTime;
     }
 
     // Update is called once per frame

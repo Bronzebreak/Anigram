@@ -11,6 +11,7 @@ public class daynight_cycle : MonoBehaviour
     [HideInInspector]
     public float timeMultiplier = 1f;
     float sunInitialIntensity;
+    public Gradient sunColor;
 
     private void Start()
     {
@@ -51,5 +52,10 @@ public class daynight_cycle : MonoBehaviour
         }
 
         sun.intensity = sunInitialIntensity * intensityMultiplier;
+    }
+
+    void AdjustSunColor()
+    {
+        sun.color = sunColor.Evaluate(sun.intensity);
     }
 }

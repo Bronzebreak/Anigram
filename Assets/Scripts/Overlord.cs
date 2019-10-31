@@ -28,6 +28,8 @@ public class Overlord : MonoBehaviour
         gazeRef = avatarRef.GetComponent<GazeInput>();
         gazeRef.HoverDelay = breathDelay;
         gazeRef.HoverDuration = inhaleTime;
+
+        //gazeRef.
     }
 
     // Update is called once per frame

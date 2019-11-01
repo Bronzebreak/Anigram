@@ -11,17 +11,35 @@ public class daynight_cycle : MonoBehaviour
     [HideInInspector]
     public float timeMultiplier = 1f;
     float sunInitialIntensity;
-    public Gradient sunColor;
+    //public Gradient sunColor;
 
-    private void Start()
+    public float updateRateInSeconds = 5f;
+    public float maxIntensity = 2f;
+    public float minIntensity = 0f;
+    public float minPoint = -0.2f;
+    public Light moon;
+    public float maxBounceIntensity = 1.0f;
+    public float minBounceIntensity = 0.5f;
+    public float maxAmbient = 1f;
+    public float minAmbient = 0f;
+    public float minAmbientPoint = -0.2f;
+    public Gradient nightDayFogColor;
+    public float fogScale = 1f;
+    public float exposureMultiplier = 1f;
+    public float dayAtmosphereThickness = 0.4f;
+    public float nightAtmosphereThickness = 0.87f;
+    public AnimationCurve fogDensityCurve;
+    public Gradient nightDayColor;
+    Material skyMat;
+    void Start()
     {
         sunInitialIntensity = sun.intensity;
+        InvokeRepeating("UpdateCycle", updateRateInSeconds, updateRateInSeconds);
     }
 
     void Update()
     {
         UpdateSun();
-
         currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
 
         if (currentTimeOfDay >= 1)
@@ -54,8 +72,36 @@ public class daynight_cycle : MonoBehaviour
         sun.intensity = sunInitialIntensity * intensityMultiplier;
     }
 
-    void AdjustSunColor()
+   // void AdjustSunColor()
+   // {
+     //   sun.color = sunColor.Evaluate(sun.intensity);
+    //}
+
+    void UpdateFX()
     {
-        sun.color = sunColor.Evaluate(sun.intensity);
+        float tRange = 1 - minPoint;
+        float dot = Mathf.Clamp01((Vector3.Dot(sun.transform.forward, Vector3.down) - minPoint) / tRange);
+        float i = ((maxIntensity - minIntensity) * dot) + minIntensity;
+        sun.intensity = i;
+        if (moon != null)
+            moon.intensity = 1 - i;
+
+        i = ((maxBounceIntensity - minBounceIntensity) * dot) + minBounceIntensity;
+        sun.bounceIntensity = i;
+
+        tRange = 1 - minAmbientPoint;
+        dot = Mathf.Clamp01((Vector3.Dot(sun.transform.forward, Vector3.down) - minAmbientPoint) / tRange);
+        i = ((maxAmbient - minAmbient) * dot) + minAmbient;
+        RenderSettings.ambientIntensity = i;
+
+        sun.color = nightDayColor.Evaluate(dot);
+        RenderSettings.ambientLight = sun.color;
+
+        RenderSettings.fogColor = nightDayFogColor.Evaluate(dot);
+        RenderSettings.fogDensity = fogDensityCurve.Evaluate(dot) * fogScale;
+
+        i = ((dayAtmosphereThickness - nightAtmosphereThickness) * dot) + nightAtmosphereThickness;
+        skyMat.SetFloat("_AtmosphereThickness", i);
+        skyMat.SetFloat("_Exposure", i * exposureMultiplier);
     }
 }

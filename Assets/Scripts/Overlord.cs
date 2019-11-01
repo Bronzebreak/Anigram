@@ -4,6 +4,8 @@ using UnityEngine;
 using Liminal.Core;
 using Liminal.SDK.VR.Avatars;
 using Liminal.SDK.VR.Avatars.Extensions;
+using Liminal.SDK.Serialization;
+using System.Reflection;
 
 public class Overlord : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class Overlord : MonoBehaviour
     public GazeInput gazeRef;
 
     //Breathing
+    //[HideInInspector]
     public float breathDelay;
     public float inhaleTime;
     public float exhaleTime;
@@ -22,19 +25,16 @@ public class Overlord : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        breathDelay = .3f;
+        breathDelay = .5f;
         inhaleTime = 2f;
         exhaleTime = 4f;
         gazeRef = avatarRef.GetComponent<GazeInput>();
-        gazeRef.HoverDelay = breathDelay;
-        gazeRef.HoverDuration = inhaleTime;
-
-        //gazeRef.
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateGaze();
         /*
         Get animController
         animControllerRef.inhaleDelay = inhaleDelay; repeat for time/exhales.
@@ -43,5 +43,21 @@ public class Overlord : MonoBehaviour
         sun delta start-end time == breathing delta inhale start-end time. 
         endbreathDelay = .6f, inhaleTime = 3f, exhaletime = 7f
         */
+    }
+    
+    public void UpdateGazePointerProperties(float delay, float duration)
+    {
+        gazeRef.HoverDelay = delay;
+        gazeRef.HoverDuration = duration;
+
+        var type = gazeRef.GetType();
+        var applyPointerPropertiesMethod = type.GetMethod("ApplyTimedPointerProperties", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+        if (applyPointerPropertiesMethod != null)
+            applyPointerPropertiesMethod.Invoke(gazeRef, null);
+    }
+
+    public void UpdateGaze()
+    {
+        UpdateGazePointerProperties(breathDelay, inhaleTime);
     }
 }

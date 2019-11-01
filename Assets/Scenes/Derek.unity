@@ -2499,7 +2499,6 @@ GameObject:
   m_Component:
   - component: {fileID: 648281603}
   - component: {fileID: 648281605}
-  - component: {fileID: 648281604}
   m_Layer: 0
   m_Name: TVCamera
   m_TagString: Untagged
@@ -2522,14 +2521,6 @@ Transform:
   m_Father: {fileID: 914126864}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0.13100001, y: -40.221, z: -0.35900003}
---- !u!81 &648281604
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648281602}
-  m_Enabled: 1
 --- !u!20 &648281605
 Camera:
   m_ObjectHideFlags: 0
@@ -8406,7 +8397,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1903653549}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1963549209}
+        m_MethodName: UpdateGaze
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1903653549
@@ -8729,9 +8731,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avatarRef: {fileID: 818290386}
   gazeRef: {fileID: 0}
-  breathDelay: 0
-  inhaleTime: 0
-  exhaleTime: 0
+  breathDelay: 2
+  inhaleTime: 0.5
+  exhaleTime: 2
 --- !u!1 &1983589189
 GameObject:
   m_ObjectHideFlags: 0

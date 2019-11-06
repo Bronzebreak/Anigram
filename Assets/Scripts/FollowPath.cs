@@ -13,9 +13,12 @@ public class FollowPath : MonoBehaviour
     #endregion //Enums
 
     #region Public Variables
+    
+
     public MovementType Type = MovementType.MoveTowards; // Movement type used
     public MovementPath MyPath; // Reference to Movement Path Used
-    public float Speed = 1; // Speed object is moving
+    private float Speed = 32.5f; // Speed object is moving
+    public float TimeTotal = 1; // Time it takes to complete the loop
     public float MaxDistanceToGoal = .1f; // How close does it have to be to the point to be considered at point
     #endregion //Public Variables
 
@@ -25,8 +28,11 @@ public class FollowPath : MonoBehaviour
 
     // (Unity Named Methods)
     #region Main Methods
-    public void Start()
+
+    public void Follow()
     {
+
+
         //Make sure there is a path assigned
         if (MyPath == null)
         {
@@ -50,6 +56,14 @@ public class FollowPath : MonoBehaviour
 
         //Set the position of this object to the position of our starting point
         transform.position = pointInPath.Current.position;
+        
+    }
+    public void Start()
+    {
+        
+        StartCoroutine(Wait());
+        
+        
     }
      
     //Update is called by Unity every frame
@@ -67,14 +81,14 @@ public class FollowPath : MonoBehaviour
             transform.position =
                 Vector3.MoveTowards(transform.position,
                                     pointInPath.Current.position,
-                                    Time.deltaTime * Speed);
+                                    Time.deltaTime * (Speed * (1/TimeTotal)));
         }
         else if (Type == MovementType.LerpTowards) //If you are using LerpTowards movement type
         {
             //Move towards the next point in path using Lerp
             transform.position = Vector3.Lerp(transform.position,
                                                 pointInPath.Current.position,
-                                                Time.deltaTime * Speed);
+                                                Time.deltaTime * (Speed * (1/TimeTotal)));
         }
 
         //Check to see if you are close enough to the next point to start moving to the following one
@@ -105,6 +119,14 @@ public class FollowPath : MonoBehaviour
     //Coroutines run parallel to other fucntions
     #region Coroutines
 
-
+    IEnumerator Wait()
+    {
+        
+        yield return new WaitForSeconds(1.3f);
+        Follow();
+        
+        
+        
+    }
     #endregion //Coroutines
 }

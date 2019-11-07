@@ -14,6 +14,8 @@ public class MovementPath : MonoBehaviour
     #endregion //Enums
 
     #region Public Variables
+
+    public int i;
     public PathTypes PathType; //Indicates type of path (Linear or Looping)
     public int movementDirection = 1; //1 clockwise/forward || -1 counter clockwise/backwards
     public int movingTo = 0; //used to identify point in PathSequence we are moving to
@@ -45,7 +47,7 @@ public class MovementPath : MonoBehaviour
         }
 
         //Loop through all of the points in the sequence of points
-        for(var i=1; i < PathSequence.Length; i++)
+        for( i=1; i < PathSequence.Length; i++)
         {
             //Draw a line between the points
             Gizmos.DrawLine(PathSequence[i - 1].position, PathSequence[i].position);
@@ -99,10 +101,10 @@ public class MovementPath : MonoBehaviour
                     movementDirection = 1; //Seting to 1 moves forward
                 }
                 //Else if you are at the end of your path
-                else if (movingTo >= PathSequence.Length - 1)
+                /*else if (movingTo >= PathSequence.Length - 1)
                 {
                     movementDirection = -1; //Seting to -1 moves backwards
-                }
+                }*/
             }
 
             movingTo = movingTo + movementDirection;  

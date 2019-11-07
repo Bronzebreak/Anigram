@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
+    public Overlord overlordRef;
     // Start is called before the first frame update
     void Start()
     {
-        
+        overlordRef = FindObjectOfType<Overlord>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void KillSelf()
     {
-        
-    }
-
-    public void killSelf()
-    {
+        overlordRef.spawnCount -= 1;
         Destroy(gameObject);
     }
 }

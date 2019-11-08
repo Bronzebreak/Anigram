@@ -1718,7 +1718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 456885589}
-  secondsInFullDay: 300
+  secondsInFullDay: 60
   currentTimeOfDay: 0.3
   timeMultiplier: 1
   updateRateInSeconds: 5

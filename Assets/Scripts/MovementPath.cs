@@ -101,10 +101,10 @@ public class MovementPath : MonoBehaviour
                     movementDirection = 1; //Seting to 1 moves forward
                 }
                 //Else if you are at the end of your path
-                /*else if (movingTo >= PathSequence.Length - 1)
+                else if (movingTo >= PathSequence.Length - 1)
                 {
                     movementDirection = -1; //Seting to -1 moves backwards
-                }*/
+                }
             }
 
             movingTo = movingTo + movementDirection;  

@@ -20,7 +20,6 @@ public class DemoFadeEffect : MonoBehaviour
     private void Start()
     {
         DemoBird.GetComponent<MeshRenderer>().material = mat;
-        animalHidden = true;
     }
 
 //-------------------------------------------------------------------------------------------------------------------------
@@ -32,7 +31,7 @@ public class DemoFadeEffect : MonoBehaviour
             print("A down");
             Color color = mat.color;
             mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1);
-            animalHidden = false;
+            DustParticle.Stop();
             print("a wild animal appeared");
             print("made it!");
         }
@@ -41,41 +40,30 @@ public class DemoFadeEffect : MonoBehaviour
         // Then, everytime the S key is pressed, set color to the mat color and have the alpha turned onto 0. When object is hidden play Blown away particle
         if (Input.GetKeyDown(KeyCode.S))
         {
-            //fadeIn();
+            fadeIn();
             print("S Down");
-            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0);
-            print("it ran away!");
-            animalHidden = true;
-            BlownAwayParticle.Play();
-            print("made it2!");
+            //mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0);
+            //print("it ran away!");
+
         }
 //-------------------------------------------------------------------------------------------------------------------------
-
-        // if the animal is hidden, have the particles stop.
-        if (animalHidden == true)
-        {
-            DustParticle.Stop();
-        }
-        //Otherwise, in the animal is not hidden, play particle effect.
-        else if (animalHidden == false)
-        {
-            DustParticle.Play();
-        }
     }
 //-------------------------------------------------------------------------------------------------------------------------
 
 
-    /*
         void fadeIn()
+    {
+        while (mat.color.a > 0)
         {
-            while (mat.color.a > 0)
-            {
-                Color newColor = mat.color;
-                newColor.a -= Time.deltaTime;
-                mat.color = newColor;
-            }
+            Color newColor = mat.color;
+            newColor.a -= Time.deltaTime;
+            mat.color = newColor;
+
+            DustParticle.Play();
+            BlownAwayParticle.Play();
+            print("made it2!");
         }
-    */
+    }
 
 
 

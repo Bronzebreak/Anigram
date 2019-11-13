@@ -12,14 +12,16 @@ public class DemoFadeEffect : MonoBehaviour
     float alphaLevel = 1;
     bool animalHidden;
 
-    public ParticleSystem DustParticle;
-    public ParticleSystem BlownAwayParticle;
+    public GameObject spawnPartical1;
+    public GameObject spawnPartical2;
+
+    public GameObject playerLocation;
 
 //-------------------------------------------------------------------------------------------------------------------------
     //Upon starting the game, get the gameobject and set it's material as 'mat', and hid the main animal.
     private void Start()
     {
-        DemoBird.GetComponent<MeshRenderer>().material = mat;
+        DemoBird.GetComponent<MeshRenderer>().material = mat;       
     }
 
 //-------------------------------------------------------------------------------------------------------------------------
@@ -28,43 +30,23 @@ public class DemoFadeEffect : MonoBehaviour
         // Then, everytime the A key is pressed, set color to the mat color and have the alpha turned onto 1.
         if (Input.GetKeyDown(KeyCode.A))
         {
-            print("A down");
             Color color = mat.color;
             mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 1);
-            DustParticle.Stop();
-            print("a wild animal appeared");
-            print("made it!");
+            //Then get the players location, and spawn particals at that point.
+            playerLocation = Instantiate(spawnPartical1, DemoBird.transform.position, Quaternion.identity);
+
         }
 
 //-------------------------------------------------------------------------------------------------------------------------
         // Then, everytime the S key is pressed, set color to the mat color and have the alpha turned onto 0. When object is hidden play Blown away particle
         if (Input.GetKeyDown(KeyCode.S))
         {
-            fadeIn();
-            print("S Down");
-            //mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0);
-            //print("it ran away!");
-
-        }
-//-------------------------------------------------------------------------------------------------------------------------
-    }
-//-------------------------------------------------------------------------------------------------------------------------
-
-
-        void fadeIn()
-    {
-        while (mat.color.a > 0)
-        {
-            Color newColor = mat.color;
-            newColor.a -= Time.deltaTime;
-            mat.color = newColor;
-
-            DustParticle.Play();
-            BlownAwayParticle.Play();
-            print("made it2!");
+            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, 0);
+            //Destroy the player location, and then player the second partical until it is finaihed.
+            Destroy(playerLocation);
+            playerLocation = Instantiate(spawnPartical2, DemoBird.transform.position, Quaternion.identity);
         }
     }
 
-
-
+//-------------------------------------------------------------------------------------------------------------------------
 }

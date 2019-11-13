@@ -309,8 +309,8 @@ MonoBehaviour:
   followPathRef: {fileID: 0}
   followPathRef2: {fileID: 0}
   spawnPoint: {fileID: 858856413}
-  Path_1: {fileID: 0}
-  Path_2: {fileID: 0}
+  time1: 2
+  time2: 4
   particlePrefab1: {fileID: 7264590038104397564, guid: 1cff57e1290742d479e6ddd77234a9c9,
     type: 3}
   particleInstance1: {fileID: 0}

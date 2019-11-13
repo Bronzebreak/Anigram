@@ -1098,16 +1098,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: c23808a31ce498545bebc41322888006, type: 2}
   DemoBird: {fileID: 250435689}
-  DustParticle: {fileID: 6276304577031795415, guid: 3a2a140d99235774db0bc48882bc1eba,
-    type: 3}
-  BlownAwayParticle: {fileID: 4517119552989182193, guid: f4883f705cca7df47a79b7d4c29984ee,
-    type: 3}
   spawnPartical1: {fileID: 6276304577031795409, guid: 3a2a140d99235774db0bc48882bc1eba,
     type: 3}
   spawnPartical2: {fileID: 4517119552989182199, guid: f4883f705cca7df47a79b7d4c29984ee,
     type: 3}
   playerLocation: {fileID: 0}
-  playerLocation2: {fileID: 0}
 --- !u!23 &250435696
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7015,7 +7010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 1645717800}
-  secondsInFullDay: 3
+  secondsInFullDay: 300
   currentTimeOfDay: 0.5
   timeMultiplier: 1
   updateRateInSeconds: 5

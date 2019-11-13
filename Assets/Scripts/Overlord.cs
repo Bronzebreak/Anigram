@@ -20,6 +20,9 @@ public class Overlord : MonoBehaviour
     public GameObject[] pondSpawns = new GameObject[6];
     public int spawnMax = 3;
     public int spawnCount = 0;
+    public GameObject phone;
+    public GameObject centerEye;
+    public Camera head;
 
     //Breathing
     //[HideInInspector]
@@ -37,6 +40,7 @@ public class Overlord : MonoBehaviour
         exhaleTime = 4f;
         gazeRef = avatarRef.GetComponent<GazeInput>();
         InvokeRepeating("SpawnCheck", 10f, 5f);
+        head = centerEye.GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -51,6 +55,10 @@ public class Overlord : MonoBehaviour
         sun delta start-end time == breathing delta inhale start-end time. 
         endbreathDelay = .6f, inhaleTime = 3f, exhaletime = 7f
         */
+        phone.transform.LookAt(head.transform);
+        phone.transform.eulerAngles = new Vector3(phone.transform.rotation.eulerAngles.x + 90, phone.transform.rotation.eulerAngles.y, phone.transform.rotation.eulerAngles.z);
+        //phone.transform.LookAt(2*phone.transform.position - head.transform.position);
+        //phone.transform.localEulerAngles = new Vector3(phone.transform.localEulerAngles.x + 90, phone.transform.localEulerAngles.y, phone.transform.localEulerAngles.z);
     }
     
     public void UpdateGazePointerProperties(float delay, float duration)

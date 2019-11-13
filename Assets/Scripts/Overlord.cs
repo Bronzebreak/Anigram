@@ -14,15 +14,13 @@ public class Overlord : MonoBehaviour
     public VRAvatar avatarRef;
     public GazeInput gazeRef;
     public GameObject[] animals = new GameObject[7];
-    public GameObject[] hillSpawns = new GameObject[6];
-    public GameObject[] tableSpawns = new GameObject[5];
-    public GameObject[] gardenSpawns = new GameObject[5];
-    public GameObject[] pondSpawns = new GameObject[6];
     public int spawnMax = 3;
     public int spawnCount = 0;
     public GameObject phone;
     public GameObject centerEye;
-    public Camera head;
+    private Camera head;
+    public List<GameObject> spawnPoints = new List<GameObject>();
+    public List<GameObject> results = new List<GameObject>();
 
     //Breathing
     //[HideInInspector]
@@ -39,7 +37,7 @@ public class Overlord : MonoBehaviour
         inhaleTime = 2f;
         exhaleTime = 4f;
         gazeRef = avatarRef.GetComponent<GazeInput>();
-        InvokeRepeating("SpawnCheck", 10f, 5f);
+        InvokeRepeating("Spawn", 1f, 5f);
         head = centerEye.GetComponent<Camera>();
     }
 
@@ -47,6 +45,8 @@ public class Overlord : MonoBehaviour
     void Update()
     {
         UpdateGazePointerProperties(breathDelay, inhaleTime);
+        phone.transform.LookAt(head.transform);
+        phone.transform.eulerAngles = new Vector3(phone.transform.rotation.eulerAngles.x + 90, phone.transform.rotation.eulerAngles.y, phone.transform.rotation.eulerAngles.z);
         /*
         Get animController
         animControllerRef.inhaleDelay = inhaleDelay; repeat for time/exhales.
@@ -55,10 +55,6 @@ public class Overlord : MonoBehaviour
         sun delta start-end time == breathing delta inhale start-end time. 
         endbreathDelay = .6f, inhaleTime = 3f, exhaletime = 7f
         */
-        phone.transform.LookAt(head.transform);
-        phone.transform.eulerAngles = new Vector3(phone.transform.rotation.eulerAngles.x + 90, phone.transform.rotation.eulerAngles.y, phone.transform.rotation.eulerAngles.z);
-        //phone.transform.LookAt(2*phone.transform.position - head.transform.position);
-        //phone.transform.localEulerAngles = new Vector3(phone.transform.localEulerAngles.x + 90, phone.transform.localEulerAngles.y, phone.transform.localEulerAngles.z);
     }
     
     public void UpdateGazePointerProperties(float delay, float duration)
@@ -72,41 +68,50 @@ public class Overlord : MonoBehaviour
             applyPointerPropertiesMethod.Invoke(gazeRef, null);
     }
 
-    void SpawnCheck()
-    {
-        if(spawnCount < spawnMax)
+    void Spawn()
+    { 
+        if (spawnCount < spawnMax)
         {
             int index = Random.Range(0, animals.Length);
             GameObject toSpawn = animals[index];
             GameObject spawnLocation;
-            
+            string zone;
+
+            print(index.ToString());
             if (index < 2)
             {
-                spawnLocation = hillSpawns[Random.Range(0, hillSpawns.Length)];
-                print(toSpawn+"Hill");
+                zone = "Hill";
             }
 
             else if (index < 4)
             {
-                spawnLocation = tableSpawns[Random.Range(0, tableSpawns.Length)];
-                print(toSpawn + "Table");
+                zone = "Table";
             }
 
             else if (index < 5)
             {
-                spawnLocation = gardenSpawns[Random.Range(0, gardenSpawns.Length)];
-                print(toSpawn + "Garden");
+                zone = "Garden";
             }
 
             else
             {
-                spawnLocation = pondSpawns[Random.Range(0, pondSpawns.Length)];
-                print(toSpawn + "Pond");
-                
+                zone = "Pond";
             }
+            print(zone);
 
-            Instantiate(toSpawn, spawnLocation.transform.position, spawnLocation.transform.rotation);
-            spawnCount++;
+            results = spawnPoints.FindAll(
+            delegate(GameObject point)
+            {
+            return point.name.Contains(zone);
+            }
+            );
+
+            int spawnIndex = Random.Range(0, results.Count);
+            spawnLocation = results[spawnIndex];
+            GameObject spawned = Instantiate(toSpawn, spawnLocation.transform.position, spawnLocation.transform.rotation);
+            spawned.GetComponent<Destroy>().spawnPoint = results[spawnIndex];
+            spawnPoints.Remove(results[spawnIndex]);
+            spawnCount++;    
         }
     }
 }

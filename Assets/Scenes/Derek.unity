@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 12023214}
   m_Layer: 0
-  m_Name: Spawnpoint (3)
+  m_Name: Table3
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -527,7 +527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77288327}
   m_Layer: 0
-  m_Name: Spawnpoint (2)
+  m_Name: Pond2
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -660,7 +660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156025338}
   m_Layer: 0
-  m_Name: Spawnpoint (2)
+  m_Name: Hill2
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1901,7 +1901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500210355}
   m_Layer: 0
-  m_Name: Spawnpoint
+  m_Name: Pond0
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2413,7 +2413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 635116238}
   m_Layer: 0
-  m_Name: Spawnpoint (3)
+  m_Name: Hill3
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2554,7 +2554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 677357272}
   m_Layer: 0
-  m_Name: Spawnpoint (4)
+  m_Name: Pond4
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2780,7 +2780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 733336014}
   m_Layer: 0
-  m_Name: Spawnpoint (1)
+  m_Name: Pond1
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3107,7 +3107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777478676}
   m_Layer: 0
-  m_Name: Spawnpoint (2)
+  m_Name: Table2
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3578,7 +3578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905910393}
   m_Layer: 0
-  m_Name: Spawnpoint (3)
+  m_Name: Pond3
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3891,7 +3891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944775514}
   m_Layer: 0
-  m_Name: Spawnpoint (1)
+  m_Name: Table1
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -3954,7 +3954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 999205781}
   m_Layer: 0
-  m_Name: Spawnpoint (3)
+  m_Name: Garden3
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4324,7 +4324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120260747}
   m_Layer: 0
-  m_Name: Spawnpoint (2)
+  m_Name: Garden2
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4431,7 +4431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1242101958}
   m_Layer: 0
-  m_Name: Spawnpoint (4)
+  m_Name: Garden4
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4553,7 +4553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1271045310}
   m_Layer: 0
-  m_Name: Spawnpoint
+  m_Name: Hill0
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4933,7 +4933,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1431420388}
   m_Layer: 0
-  m_Name: Spawnpoint (1)
+  m_Name: Hill1
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5459,7 +5459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1502354750}
   m_Layer: 0
-  m_Name: Spawnpoint (5)
+  m_Name: Pond5
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5616,7 +5616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1528766027}
   m_Layer: 0
-  m_Name: Spawnpoint (4)
+  m_Name: Table4
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5999,7 +5999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629413429}
   m_Layer: 0
-  m_Name: Spawnpoint (5)
+  m_Name: Hill5
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6218,7 +6218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1679712800}
   m_Layer: 0
-  m_Name: Spawnpoint (1)
+  m_Name: Garden1
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -7171,7 +7171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1860040736}
   m_Layer: 0
-  m_Name: Spawnpoint
+  m_Name: Table0
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -7293,7 +7293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1912024688}
   m_Layer: 0
-  m_Name: Spawnpoint
+  m_Name: Garden0
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -7523,6 +7523,34 @@ MonoBehaviour:
   phone: {fileID: 918958942}
   centerEye: {fileID: 2018362131}
   head: {fileID: 2018362131}
+  spawnPoints:
+  - {fileID: 1271045309}
+  - {fileID: 1431420387}
+  - {fileID: 156025337}
+  - {fileID: 635116237}
+  - {fileID: 2012404096}
+  - {fileID: 1629413428}
+  - {fileID: 1860040735}
+  - {fileID: 944775513}
+  - {fileID: 777478675}
+  - {fileID: 12023213}
+  - {fileID: 1528766026}
+  - {fileID: 1912024687}
+  - {fileID: 1679712799}
+  - {fileID: 1120260746}
+  - {fileID: 999205780}
+  - {fileID: 1242101957}
+  - {fileID: 500210354}
+  - {fileID: 733336013}
+  - {fileID: 77288326}
+  - {fileID: 905910392}
+  - {fileID: 677357271}
+  - {fileID: 1502354749}
+  spawnedAnimals:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  results: []
   breathDelay: 2
   inhaleTime: 0.5
   exhaleTime: 2
@@ -7725,7 +7753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2012404097}
   m_Layer: 0
-  m_Name: Spawnpoint (4)
+  m_Name: Hill4
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

@@ -7492,37 +7492,10 @@ MonoBehaviour:
   - {fileID: 8947492585353195002, guid: d6b7103cafb49cf4f996d4f101a97058, type: 3}
   - {fileID: 3461585564134036163, guid: 229ec0eedb7367c4aab8cdb72cc6055f, type: 3}
   - {fileID: 5505645107141806320, guid: f58342fd0bf44f341adce10722c28ef3, type: 3}
-  hillSpawns:
-  - {fileID: 1271045309}
-  - {fileID: 1431420387}
-  - {fileID: 2012404096}
-  - {fileID: 635116237}
-  - {fileID: 2012404096}
-  - {fileID: 1629413428}
-  tableSpawns:
-  - {fileID: 1860040735}
-  - {fileID: 944775513}
-  - {fileID: 777478675}
-  - {fileID: 12023213}
-  - {fileID: 1528766026}
-  gardenSpawns:
-  - {fileID: 1912024687}
-  - {fileID: 1679712799}
-  - {fileID: 1120260746}
-  - {fileID: 999205780}
-  - {fileID: 1242101957}
-  pondSpawns:
-  - {fileID: 500210354}
-  - {fileID: 733336013}
-  - {fileID: 77288326}
-  - {fileID: 905910392}
-  - {fileID: 677357271}
-  - {fileID: 1502354749}
   spawnMax: 3
   spawnCount: 0
   phone: {fileID: 918958942}
   centerEye: {fileID: 2018362131}
-  head: {fileID: 2018362131}
   spawnPoints:
   - {fileID: 1271045309}
   - {fileID: 1431420387}
@@ -7546,11 +7519,8 @@ MonoBehaviour:
   - {fileID: 905910392}
   - {fileID: 677357271}
   - {fileID: 1502354749}
-  spawnedAnimals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   results: []
+  initialDelay: 30
   breathDelay: 2
   inhaleTime: 0.5
   exhaleTime: 2

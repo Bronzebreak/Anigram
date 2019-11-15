@@ -37,7 +37,7 @@ public class Overlord : MonoBehaviour
         inhaleTime = 2f;
         exhaleTime = 4f;
         gazeRef = avatarRef.GetComponent<GazeInput>();
-        InvokeRepeating("Spawn", 1f, 5f);
+        InvokeRepeating("Spawn", 30, 5);
         head = centerEye.GetComponent<Camera>();
     }
 
@@ -109,6 +109,11 @@ public class Overlord : MonoBehaviour
             int spawnIndex = Random.Range(0, results.Count);
             spawnLocation = results[spawnIndex];
             GameObject spawned = Instantiate(toSpawn, spawnLocation.transform.position, spawnLocation.transform.rotation);
+            if (index == 0 || index == 2)
+            {
+                spawned.transform.position = spawned.transform.position + new Vector3 (0, 2, 0);
+            }
+
             spawned.GetComponent<Destroy>().spawnPoint = results[spawnIndex];
             spawnPoints.Remove(results[spawnIndex]);
             spawnCount++;    

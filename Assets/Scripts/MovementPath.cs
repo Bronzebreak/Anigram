@@ -58,6 +58,7 @@ public class MovementPath : MonoBehaviour
         {
             //Draw a line from the last point to the first point in the sequence
             Gizmos.DrawLine(PathSequence[0].position, PathSequence[PathSequence.Length-1].position);
+
         }
     }
     #endregion //Main Methods
@@ -103,7 +104,7 @@ public class MovementPath : MonoBehaviour
                 //Else if you are at the end of your path
                 else if (movingTo >= PathSequence.Length - 1)
                 {
-                    movementDirection = -1; //Seting to -1 moves backwards
+                    movementDirection = 0; //Seting to -1 moves backwards
                 }
             }
 
@@ -127,7 +128,7 @@ public class MovementPath : MonoBehaviour
                 if (movingTo < 0)
                 {
                     //Set the next point to move to as the last point in sequence
-                    movingTo = PathSequence.Length - 1;
+                    movingTo = PathSequence.Length ;
                 }
             }
         }

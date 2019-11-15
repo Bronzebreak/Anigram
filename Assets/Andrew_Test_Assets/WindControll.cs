@@ -8,9 +8,9 @@ public class WindControll : MonoBehaviour
     public FollowPath followPathRef;
     public FollowPath followPathRef2;
     public GameObject spawnPoint;
-    public float time1 = 2.0f;
-    public float time2 = 4.0f;
-    public float timeDelay = 0.3f;
+    float time1 = 2.3f;
+    float time2 = 4.3f;
+    float timeDelay = 0.3f;
     float timeNow;
     public GameObject particlePrefab1;
     public GameObject particleInstance1;
@@ -37,22 +37,27 @@ public class WindControll : MonoBehaviour
     IEnumerator Timer()
     {
         while (true){
-            
-            yield return new WaitForSeconds(timeDelay);
+            time1 = 2 + (1 * (timeNow / 300.0f));
+            time2 = 4 + (3 * (timeNow / 300.0f));
+            timeDelay = 0.3f + (0.3f * (timeNow / 300.0f));
             particleInstance1 = Instantiate(particlePrefab1, spawnPoint.transform.position, Quaternion.identity);
             followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
-            followPathRef.TimeTotal = time1;  
-            yield return new WaitForSeconds(time1 + timeDelay);
-            Destroy(particleInstance1);
+            followPathRef.TimeTotal = time1;
+            particleInstance1.SetActive(false);
             particleInstance2 = Instantiate(particlePrefab2, spawnPoint.transform.position, Quaternion.identity);
             followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
             followPathRef2.TimeTotal = time2;
+            particleInstance2.SetActive(false);
+            yield return new WaitForSeconds(timeDelay);
+            particleInstance1.SetActive(true);
+            yield return new WaitForSeconds(time1 + timeDelay);
+            Destroy(particleInstance1);
+            particleInstance2.SetActive(true);
             yield return new WaitForSeconds(time2 + timeDelay);
+            particleInstance2.SetActive(false);
             Destroy(particleInstance2);
-            print(time1+" "+time2+" "+timeDelay);
-            time1 = time1 + (1*(timeNow/300.0f));
-            time2 = time2 + (3*(timeNow/300.0f));
-            timeDelay = timeDelay +(0.3f*(timeNow/300.0f));
+            //print(time1+" "+time2+" "+timeDelay);
+
         }
 
         

@@ -68,11 +68,16 @@ public class FollowPath : MonoBehaviour
             totalDistance = totalDistance + distance;// adds the distance between two points to total distance
             print(totalDistance);
         }
-        StartCoroutine(Wait());
+        
         
         
     }
      
+    public void Start()
+    {
+        StartCoroutine(Wait());
+    }
+
     //Update is called by Unity every frame
     public void Update()
     {

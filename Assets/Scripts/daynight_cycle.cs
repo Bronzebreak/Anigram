@@ -13,7 +13,7 @@ public class daynight_cycle : MonoBehaviour
     float sunInitialIntensity;
     //public Gradient sunColor;
 
-    public float updateRateInSeconds = 5f;
+    //public float updateRateInSeconds = 5f;
     public float maxIntensity = 2f;
     public float minIntensity = 0f;
     public float minPoint = -0.2f;
@@ -34,13 +34,14 @@ public class daynight_cycle : MonoBehaviour
     void Start()
     {
         sunInitialIntensity = sun.intensity;
-        InvokeRepeating("UpdateCycle", updateRateInSeconds, updateRateInSeconds);
+        //InvokeRepeating("UpdateCycle", updateRateInSeconds, updateRateInSeconds);
     }
 
     void Update()
     {
         UpdateSun();
-        currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
+        //currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
+        currentTimeOfDay =( 0.5f + (Time.realtimeSinceStartup/secondsInFullDay) ) * timeMultiplier;
 
         if (currentTimeOfDay >= 1)
         {

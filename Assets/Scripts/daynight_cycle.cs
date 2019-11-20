@@ -41,11 +41,11 @@ public class daynight_cycle : MonoBehaviour
     {
         UpdateSun();
         //currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
-        currentTimeOfDay =( 0.5f + (Time.realtimeSinceStartup/secondsInFullDay) ) * timeMultiplier;
+        currentTimeOfDay =( 0.45f + (Time.realtimeSinceStartup/secondsInFullDay) ) * timeMultiplier;
 
         if (currentTimeOfDay >= 1)
         {
-            currentTimeOfDay = 0;
+            currentTimeOfDay -= 1;
         }
 
     }
@@ -67,7 +67,7 @@ public class daynight_cycle : MonoBehaviour
 
         else if (currentTimeOfDay >= 0.73f)
         {
-            intensityMultiplier = Mathf.Clamp01(1 - ((currentTimeOfDay - 0.73f) * (1 / 0.02f)));
+            intensityMultiplier = 1;//Mathf.Clamp01(1 - ((currentTimeOfDay - 0.73f) * (1 / 0.02f)));
         }
 
         sun.intensity = sunInitialIntensity * intensityMultiplier;

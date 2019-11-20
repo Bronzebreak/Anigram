@@ -21,23 +21,21 @@ public class Overlord : MonoBehaviour
     private Camera head;
     public List<GameObject> spawnPoints = new List<GameObject>();
     public List<GameObject> results = new List<GameObject>();
-
-    //Breathing
-    //[HideInInspector]
-    public float breathDelay;
-    public float inhaleTime;
-    public float exhaleTime;
+    public int startDelay = 30;
+    public int repeatDelay = 5; 
+    public float breathDelay = .3f;
+    public float inhaleTime = 2f;
+    public float exhaleTime = 4f;
+    public AudioClip[] sounds = new AudioClip[7];
+    public ParticleSystem spawnParticle;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        breathDelay = .3f;
-        inhaleTime = 2f;
-        exhaleTime = 4f;
         gazeRef = avatarRef.GetComponent<GazeInput>();
-        InvokeRepeating("Spawn", 30, 5);
+        InvokeRepeating("Spawn", startDelay, repeatDelay);
         head = centerEye.GetComponent<Camera>();
     }
 
@@ -109,12 +107,15 @@ public class Overlord : MonoBehaviour
             int spawnIndex = Random.Range(0, results.Count);
             spawnLocation = results[spawnIndex];
             GameObject spawned = Instantiate(toSpawn, spawnLocation.transform.position, spawnLocation.transform.rotation);
+
             if (index == 0 || index == 2)
             {
                 spawned.transform.position = spawned.transform.position + new Vector3 (0, 2, 0);
             }
+            ParticleSystem spawnedParticle = Instantiate(spawnParticle, spawnLocation.transform.position, spawnLocation.transform.rotation);
 
-            spawned.GetComponent<Destroy>().spawnPoint = results[spawnIndex];
+            spawned.GetComponent<Animal>().spawnPoint = results[spawnIndex];
+            spawned.GetComponent<Animal>().soundToPlay = sounds[index];
             spawnPoints.Remove(results[spawnIndex]);
             spawnCount++;    
         }

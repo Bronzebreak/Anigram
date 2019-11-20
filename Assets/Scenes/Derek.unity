@@ -7485,14 +7485,14 @@ MonoBehaviour:
   avatarRef: {fileID: 818290386}
   gazeRef: {fileID: 0}
   animals:
-  - {fileID: 5031543385495046548, guid: c69bc23a5e936e643bc4d92713e25c79, type: 3}
-  - {fileID: 4311807919602028668, guid: fb6d3fff03f20364bb5be250cdf1d79b, type: 3}
-  - {fileID: 8274053264794531537, guid: c5a0948d791d8804fb079db2dfa37403, type: 3}
-  - {fileID: 8606609684182185402, guid: 5f1e70af570427f46b1d4adf69da08fd, type: 3}
-  - {fileID: 8947492585353195002, guid: d6b7103cafb49cf4f996d4f101a97058, type: 3}
-  - {fileID: 3461585564134036163, guid: 229ec0eedb7367c4aab8cdb72cc6055f, type: 3}
-  - {fileID: 5505645107141806320, guid: f58342fd0bf44f341adce10722c28ef3, type: 3}
-  spawnMax: 3
+  - {fileID: 4652285782242933836, guid: 26a79a197ebb91941ad79473ded86fb5, type: 3}
+  - {fileID: 2649004423780504351, guid: 9e0d800f58ec0e14cb5e179385f985b9, type: 3}
+  - {fileID: 7953475053140502905, guid: 2b8f2f2a5fd7e574b8550394cf015d61, type: 3}
+  - {fileID: 4638806218937329616, guid: 9324950d0740fb64282fe07b927a6927, type: 3}
+  - {fileID: 6706738076647057795, guid: 5b7ef5d3416c0534aa00e7e9468e8619, type: 3}
+  - {fileID: 5666374858226889488, guid: 51a136d5bf7ac0b43bb03f2a397c1c99, type: 3}
+  - {fileID: 4410160660946666507, guid: 4fa07d53924337f40b2bdaee2e6811ce, type: 3}
+  spawnMax: 22
   spawnCount: 0
   phone: {fileID: 918958942}
   centerEye: {fileID: 2018362131}
@@ -7520,10 +7520,21 @@ MonoBehaviour:
   - {fileID: 677357271}
   - {fileID: 1502354749}
   results: []
-  initialDelay: 30
-  breathDelay: 2
-  inhaleTime: 0.5
-  exhaleTime: 2
+  startDelay: 30
+  repeatDelay: 5
+  breathDelay: 0.5
+  inhaleTime: 2
+  exhaleTime: 4
+  sounds:
+  - {fileID: 8300000, guid: b0296c349bddf754babad2dc2a202fb8, type: 3}
+  - {fileID: 8300000, guid: 12340bfe99f8ad54b9fc542666e88cec, type: 3}
+  - {fileID: 8300000, guid: d4575b456f69ff940997389d29a157a0, type: 3}
+  - {fileID: 8300000, guid: 3c0623657c2382c46878f6abb0219f74, type: 3}
+  - {fileID: 8300000, guid: 82a2bbfd1c5a4714495b2e4eb351d474, type: 3}
+  - {fileID: 8300000, guid: c7852ef9003aea945be6b61f4e84ae90, type: 3}
+  - {fileID: 8300000, guid: 75f48254708e452499921248b98e10a1, type: 3}
+  spawnParticle: {fileID: 6276304577031795415, guid: 4ba4643166a97084bae0df7aaaf732c7,
+    type: 3}
 --- !u!1 &1983589189
 GameObject:
   m_ObjectHideFlags: 0

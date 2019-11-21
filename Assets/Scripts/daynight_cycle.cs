@@ -14,6 +14,7 @@ public class daynight_cycle : MonoBehaviour
     //public Gradient sunColor;
 
     //public float updateRateInSeconds = 5f;
+    /*
     public float maxIntensity = 2f;
     public float minIntensity = 0f;
     public float minPoint = -0.2f;
@@ -31,6 +32,8 @@ public class daynight_cycle : MonoBehaviour
     public AnimationCurve fogDensityCurve;
     public Gradient nightDayColor;
     Material skyMat;
+    */
+
     void Start()
     {
         sunInitialIntensity = sun.intensity;
@@ -78,6 +81,7 @@ public class daynight_cycle : MonoBehaviour
      //   sun.color = sunColor.Evaluate(sun.intensity);
     //}
 
+       /*
     void UpdateFX()
     {
         float tRange = 1 - minPoint;
@@ -105,4 +109,6 @@ public class daynight_cycle : MonoBehaviour
         skyMat.SetFloat("_AtmosphereThickness", i);
         skyMat.SetFloat("_Exposure", i * exposureMultiplier);
     }
+
+    */
 }

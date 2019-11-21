@@ -11,6 +11,8 @@ public class daynight_cycle : MonoBehaviour
     [HideInInspector]
     public float timeMultiplier = 1f;
     float sunInitialIntensity;
+    public Light moon;
+
     //public Gradient sunColor;
 
     //public float updateRateInSeconds = 5f;
@@ -18,7 +20,6 @@ public class daynight_cycle : MonoBehaviour
     public float maxIntensity = 2f;
     public float minIntensity = 0f;
     public float minPoint = -0.2f;
-    public Light moon;
     public float maxBounceIntensity = 1.0f;
     public float minBounceIntensity = 0.5f;
     public float maxAmbient = 1f;

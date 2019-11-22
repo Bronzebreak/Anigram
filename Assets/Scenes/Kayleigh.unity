@@ -1717,88 +1717,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222affe85c283c146a8da1e2474168d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followPathRef: {fileID: 0}
+  followPathRef2: {fileID: 0}
+  spawnPoint: {fileID: 2116992285}
+  particlePrefab1: {fileID: 1465644189577625329, guid: 6639c9a26dfa6f9479896999b598e688,
+    type: 3}
+  particleInstance1: {fileID: 0}
+  particlePrefab2: {fileID: 6059856921798998681, guid: 54c636aa4789bf149b5f95923a3cb275,
+    type: 3}
+  particleInstance2: {fileID: 0}
   sun: {fileID: 456885589}
   secondsInFullDay: 60
   currentTimeOfDay: 0
   timeMultiplier: 1
-  updateRateInSeconds: 5
-  maxIntensity: 2
-  minIntensity: 0
-  minPoint: -0.2
   moon: {fileID: 75544674}
-  maxBounceIntensity: 1
-  minBounceIntensity: 0.5
-  maxAmbient: 1
-  minAmbient: 0
-  minAmbientPoint: -0.2
-  nightDayFogColor:
-    serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0.5625, a: 1}
-    key1: {r: 1, g: 0.106382996, b: 0, a: 1}
-    key2: {r: 1, g: 0.9690722, b: 0, a: 0}
-    key3: {r: 1, g: 1, b: 1, a: 0}
-    key4: {r: 1, g: 1, b: 1, a: 0}
-    key5: {r: 0.6767017, g: 0.3066038, b: 1, a: 0}
-    key6: {r: 0.6767017, g: 0.3066038, b: 1, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 10216
-    ctime2: 19275
-    ctime3: 65535
-    ctime4: 65535
-    ctime5: 65535
-    ctime6: 65535
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 4
-    m_NumAlphaKeys: 2
-  fogScale: 1
-  exposureMultiplier: 1
-  dayAtmosphereThickness: 0.4
-  nightAtmosphereThickness: 0.87
-  fogDensityCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  nightDayColor:
-    serializedVersion: 2
-    key0: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 1, g: 1, b: 1, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
 --- !u!4 &456885588
 Transform:
   m_ObjectHideFlags: 0
@@ -1811,6 +1743,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 75544675}
+  - {fileID: 2116992286}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7319,6 +7252,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085120333}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2116992285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2116992286}
+  m_Layer: 0
+  m_Name: windSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2116992286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116992285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 456885588}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2124293219
 GameObject:
   m_ObjectHideFlags: 0

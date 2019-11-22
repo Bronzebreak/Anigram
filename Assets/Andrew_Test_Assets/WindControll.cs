@@ -56,14 +56,6 @@ public class WindControll : MonoBehaviour
             yield return new WaitForSeconds(time2 + timeDelay);
             particleInstance2.SetActive(false);
             Destroy(particleInstance2);
-            
-
         }
-
-        
-
-        
-        
-        
     }
 }

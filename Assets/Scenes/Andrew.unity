@@ -15857,10 +15857,10 @@ MonoBehaviour:
   followPathRef: {fileID: 0}
   followPathRef2: {fileID: 0}
   spawnPoint: {fileID: 858856413}
-  particlePrefab1: {fileID: 7092478314706986950, guid: 90ab4b82ac97520459d5ae9317d8b2a9,
+  particlePrefab1: {fileID: 2336548159779124592, guid: c87d47736fd496945991de6ee3b9c624,
     type: 3}
   particleInstance1: {fileID: 0}
-  particlePrefab2: {fileID: 2336548159779124592, guid: c87d47736fd496945991de6ee3b9c624,
+  particlePrefab2: {fileID: 7092478314706986950, guid: 90ab4b82ac97520459d5ae9317d8b2a9,
     type: 3}
   particleInstance2: {fileID: 0}
 --- !u!1 &625093766

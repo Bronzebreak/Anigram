@@ -9,9 +9,9 @@ public class daynight_cycle : MonoBehaviour
     public FollowPath followPathRef2; //reference to script in second particle
     public GameObject spawnPoint; //Spawn Point of the wind
     public GameObject spawnPoint2; //Spawn Point of the wind
-    float time1 = 2.0f; // initial time of the inhale cycle
-    float time2 = 4.0f; // initial time of exhale cycle
-    float timeDelay = 0.0f; // delay between inhale and exhale
+    float time1 = 2.2f; // initial time of the inhale cycle
+    float time2 = 4.2f; // initial time of exhale cycle
+    float timeDelay = 0.2f; // delay between inhale and exhale
     float timeNow; // time since the start of the program
     public GameObject particlePrefab1; // reference to prefabe
     public GameObject particleInstance1; // instantiated object
@@ -146,8 +146,8 @@ public class daynight_cycle : MonoBehaviour
         while (true)
         {
            
-            time1 = 2 + (1 * (timeNow / (secondsInFullDay/4.0f)));// updates the time for the graduale increase of the inhale cycle
-            time2 = 4 + (3 * (timeNow / (secondsInFullDay / 4.0f)));// updates the time for the graduale increase of the exhale cycle
+            time1 = 2.2f + (1 * (timeNow / (secondsInFullDay/4.0f)));// updates the time for the graduale increase of the inhale cycle
+            time2 = 4.2f + (3 * (timeNow / (secondsInFullDay / 4.0f)));// updates the time for the graduale increase of the exhale cycle
             timeDelay = 0.3f + (0.3f * (timeNow / (secondsInFullDay / 4)));// updates delay between cycles
 
             particleInstance1 = Instantiate(particlePrefab1, spawnPoint.transform.position, Quaternion.identity);

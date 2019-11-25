@@ -8,7 +8,7 @@ public class daynight_cycle : MonoBehaviour
     public FollowPath followPathRef; //reference to script in first particle
     public FollowPath followPathRef2; //reference to script in second particle
     public GameObject spawnPoint; //Spawn Point of the wind
-    //public GameObject spawnPoint; //Spawn Point of the wind
+    public GameObject spawnPoint2; //Spawn Point of the wind
     float time1 = 2.0f; // initial time of the inhale cycle
     float time2 = 4.0f; // initial time of exhale cycle
     float timeDelay = 0.0f; // delay between inhale and exhale
@@ -156,7 +156,7 @@ public class daynight_cycle : MonoBehaviour
             yield return new WaitForSeconds(time1 + timeDelay);
             Destroy(particleInstance1);
             yield return new WaitForSeconds(timeDelay);
-            particleInstance2 = Instantiate(particlePrefab2, spawnPoint.transform.position, Quaternion.identity);
+            particleInstance2 = Instantiate(particlePrefab2, spawnPoint2.transform.position, Quaternion.identity);
             followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
             followPathRef2.TimeTotal = time2;
             yield return new WaitForSeconds(time2 + timeDelay);

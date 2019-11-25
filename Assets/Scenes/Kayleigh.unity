@@ -1727,27 +1727,27 @@ MonoBehaviour:
     type: 3}
   particleInstance2: {fileID: 0}
   sun: {fileID: 456885589}
-  secondsInFullDay: 60
+  secondsInFullDay: 1200
   currentTimeOfDay: 0.99
   timeMultiplier: 1
   moon: {fileID: 75544674}
   sunset:
     serializedVersion: 2
-    key0: {r: 1, g: 1, b: 0.7686275, a: 1}
-    key1: {r: 1, g: 1, b: 0.7686275, a: 1}
-    key2: {r: 1, g: 0.51145554, b: 0.41037738, a: 0}
+    key0: {r: 1, g: 0.9688339, b: 0.33333337, a: 1}
+    key1: {r: 1, g: 0.9383242, b: 0.33430418, a: 1}
+    key2: {r: 1, g: 0.60898453, b: 0.2688679, a: 0}
     key3: {r: 0.9339623, g: 0.2863564, b: 0.31205493, a: 0}
     key4: {r: 0.8773585, g: 0.31038627, b: 0.6317962, a: 0}
     key5: {r: 0.42352945, g: 0.21568629, b: 0.5176471, a: 0}
     key6: {r: 0.42352945, g: 0.21568629, b: 0.5176471, a: 0}
     key7: {r: 0.42352945, g: 0.21568629, b: 0.5176471, a: 0}
     ctime0: 0
-    ctime1: 36815
-    ctime2: 47031
-    ctime3: 51464
-    ctime4: 56669
-    ctime5: 61680
-    ctime6: 61680
+    ctime1: 33539
+    ctime2: 39128
+    ctime3: 43176
+    ctime4: 46260
+    ctime5: 51079
+    ctime6: 51079
     ctime7: 61680
     atime0: 0
     atime1: 65535

@@ -18,7 +18,7 @@ public class FollowPath : MonoBehaviour
     public MovementType Type = MovementType.MoveTowards; // Movement type used
     public MovementPath MyPath; // Reference to Movement Path Used
     private float Speed ; // Speed object is moving
-    public float TimeTotal=0.0f; // Time it takes to complete the loop
+    public float TimeTotal = 0.0f; // Time it takes to complete the loop
     float totalDistance = 0.0f;
     public float MaxDistanceToGoal = .1f; // How close does it have to be to the point to be considered at point
     #endregion //Public Variables
@@ -66,7 +66,7 @@ public class FollowPath : MonoBehaviour
         {
             float distance = Vector3.Distance(MyPath.PathSequence[points].position, MyPath.PathSequence[points + 1].position);//gets the distance between two points next5 to each other in array.
             totalDistance = totalDistance + distance;// adds the distance between two points to total distance
-            print(totalDistance);
+            
         }
         
         
@@ -76,6 +76,7 @@ public class FollowPath : MonoBehaviour
     public void Start()
     {
         StartCoroutine(Wait());
+        print(TimeTotal);
     }
 
     //Update is called by Unity every frame

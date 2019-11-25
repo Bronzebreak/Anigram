@@ -8,6 +8,7 @@ public class daynight_cycle : MonoBehaviour
     public FollowPath followPathRef; //reference to script in first particle
     public FollowPath followPathRef2; //reference to script in second particle
     public GameObject spawnPoint; //Spawn Point of the wind
+    //public GameObject spawnPoint; //Spawn Point of the wind
     float time1 = 2.0f; // initial time of the inhale cycle
     float time2 = 4.0f; // initial time of exhale cycle
     float timeDelay = 0.0f; // delay between inhale and exhale
@@ -144,7 +145,7 @@ public class daynight_cycle : MonoBehaviour
     {
         while (true)
         {
-            print("Hello");
+           
             time1 = 2 + (1 * (timeNow / (secondsInFullDay/4.0f)));// updates the time for the graduale increase of the inhale cycle
             time2 = 4 + (3 * (timeNow / (secondsInFullDay / 4.0f)));// updates the time for the graduale increase of the exhale cycle
             timeDelay = 0.3f + (0.3f * (timeNow / (secondsInFullDay / 4)));// updates delay between cycles
@@ -152,18 +153,13 @@ public class daynight_cycle : MonoBehaviour
             particleInstance1 = Instantiate(particlePrefab1, spawnPoint.transform.position, Quaternion.identity);
             followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
             followPathRef.TimeTotal = time1;
-            particleInstance1.SetActive(false);
+            yield return new WaitForSeconds(time1 + timeDelay);
+            Destroy(particleInstance1);
+            yield return new WaitForSeconds(timeDelay);
             particleInstance2 = Instantiate(particlePrefab2, spawnPoint.transform.position, Quaternion.identity);
             followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
             followPathRef2.TimeTotal = time2;
-            particleInstance2.SetActive(false);
-            yield return new WaitForSeconds(timeDelay);
-            particleInstance1.SetActive(true);
-            yield return new WaitForSeconds(time1 + timeDelay);
-            Destroy(particleInstance1);
-            particleInstance2.SetActive(true);
             yield return new WaitForSeconds(time2 + timeDelay);
-            particleInstance2.SetActive(false);
             Destroy(particleInstance2);
         }
     }

@@ -27,6 +27,9 @@ public class daynight_cycle : MonoBehaviour
     float sunInitialIntensity;
     public Light moon;
 
+    public Color startColor;
+    public Color endColor;
+
     //public Gradient sunColor;
 
     //public float updateRateInSeconds = 5f;
@@ -75,6 +78,7 @@ public class daynight_cycle : MonoBehaviour
             currentTimeOfDay -= 1;
         }
 
+        sun.color = Color.Lerp(startColor, endColor, currentTimeOfDay);
     }
 
     void UpdateSun()

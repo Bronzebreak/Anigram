@@ -179,11 +179,11 @@ public class daynight_cycle : MonoBehaviour
             time2 = 4 + (3 * (timeNow / (secondsInFullDay / 4)));// updates the time for the graduale increase of the exhale cycle
             timeDelay = 0.3f + (0.3f * (timeNow / (secondsInFullDay / 4)));// updates delay between cycles
 
-            particleInstance1 = Instantiate(particlePrefab1, exhaleSpawnPoint.transform.position, Quaternion.identity);
+            particleInstance1 = Instantiate(particlePrefab1, inhaleSpawnPoint.transform.position, Quaternion.identity);
             followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
             followPathRef.TimeTotal = time1;
             particleInstance1.SetActive(false);
-            particleInstance2 = Instantiate(particlePrefab2, inhaleSpawnPoint.transform.position, Quaternion.identity);
+            particleInstance2 = Instantiate(particlePrefab2, exhaleSpawnPoint.transform.position, Quaternion.identity);
             followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
             followPathRef2.TimeTotal = time2;
             particleInstance2.SetActive(false);

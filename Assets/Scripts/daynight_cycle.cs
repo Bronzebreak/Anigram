@@ -8,9 +8,9 @@ public class daynight_cycle : MonoBehaviour
     public FollowPath followPathRef; //reference to script in first particle
     public FollowPath followPathRef2; //reference to script in second particle
     public GameObject spawnPoint; //Spawn Point of the wind
-    float time1 = 2.0f; // initial time of the inhale cycle
-    float time2 = 4.0f; // initial time of exhale cycle
-    float timeDelay = 0.0f; // delay between inhale and exhale
+    float time1 = 2.3f; // initial time of the inhale cycle
+    float time2 = 4.3f; // initial time of exhale cycle
+    float timeDelay = 0.3f; // delay between inhale and exhale
     float timeNow; // time since the start of the program
     public GameObject particlePrefab1; // reference to prefabe
     public GameObject particleInstance1; // instantiated object
@@ -27,10 +27,15 @@ public class daynight_cycle : MonoBehaviour
     float sunInitialIntensity;
     public Light moon;
 
+    /*
     public Color startColor;
+    public Color lightorangeColor;
+    public Color orangeColor;
+    public Color redColor;
+    public Color pinkColor;
     public Color endColor;
-
-    //public Gradient sunColor;
+    */
+    public Gradient sunset;
 
     //public float updateRateInSeconds = 5f;
     /*
@@ -78,7 +83,32 @@ public class daynight_cycle : MonoBehaviour
             currentTimeOfDay -= 1;
         }
 
-        sun.color = Color.Lerp(startColor, endColor, currentTimeOfDay);
+        sun.color = sunset.Evaluate(currentTimeOfDay);
+/*
+        if (currentTimeOfDay >= 0.65)
+            {
+                sun.color = Color.Lerp(startColor, endColor, currentTimeOfDay);
+            }
+
+        else if (currentTimeOfDay >= 0.62)
+        {
+            sun.color = Color.Lerp(redColor, pinkColor, currentTimeOfDay);
+        }
+        else if (currentTimeOfDay >= 0.6)
+        {
+            sun.color = Color.Lerp(orangeColor, redColor, currentTimeOfDay);
+        }
+        else if (currentTimeOfDay >= 0.57)
+        {
+            sun.color = Color.Lerp(lightorangeColor, orangeColor, currentTimeOfDay);
+        }
+
+        else if (currentTimeOfDay >= 0.55)
+        {
+            sun.color = Color.Lerp(startColor, lightorangeColor, currentTimeOfDay);
+        }
+        */
+
     }
 
     void UpdateSun()
@@ -144,9 +174,8 @@ public class daynight_cycle : MonoBehaviour
     {
         while (true)
         {
-            print("Hello");
-            time1 = 2 + (1 * (timeNow / (secondsInFullDay/4.0f)));// updates the time for the graduale increase of the inhale cycle
-            time2 = 4 + (3 * (timeNow / (secondsInFullDay / 4.0f)));// updates the time for the graduale increase of the exhale cycle
+            time1 = 2 + (1 * (timeNow / (secondsInFullDay/4)));// updates the time for the graduale increase of the inhale cycle
+            time2 = 4 + (3 * (timeNow / (secondsInFullDay / 4)));// updates the time for the graduale increase of the exhale cycle
             timeDelay = 0.3f + (0.3f * (timeNow / (secondsInFullDay / 4)));// updates delay between cycles
 
             particleInstance1 = Instantiate(particlePrefab1, spawnPoint.transform.position, Quaternion.identity);

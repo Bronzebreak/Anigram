@@ -7,7 +7,8 @@ public class daynight_cycle : MonoBehaviour
     //Wind Particle Variables
     public FollowPath followPathRef; //reference to script in first particle
     public FollowPath followPathRef2; //reference to script in second particle
-    public GameObject spawnPoint; //Spawn Point of the wind
+    public GameObject inhaleSpawnPoint;
+    public GameObject exhaleSpawnPoint;//Spawn Point of the wind
     float time1 = 2.3f; // initial time of the inhale cycle
     float time2 = 4.3f; // initial time of exhale cycle
     float timeDelay = 0.3f; // delay between inhale and exhale
@@ -178,11 +179,11 @@ public class daynight_cycle : MonoBehaviour
             time2 = 4 + (3 * (timeNow / (secondsInFullDay / 4)));// updates the time for the graduale increase of the exhale cycle
             timeDelay = 0.3f + (0.3f * (timeNow / (secondsInFullDay / 4)));// updates delay between cycles
 
-            particleInstance1 = Instantiate(particlePrefab1, spawnPoint.transform.position, Quaternion.identity);
+            particleInstance1 = Instantiate(particlePrefab1, exhaleSpawnPoint.transform.position, Quaternion.identity);
             followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
             followPathRef.TimeTotal = time1;
             particleInstance1.SetActive(false);
-            particleInstance2 = Instantiate(particlePrefab2, spawnPoint.transform.position, Quaternion.identity);
+            particleInstance2 = Instantiate(particlePrefab2, inhaleSpawnPoint.transform.position, Quaternion.identity);
             followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
             followPathRef2.TimeTotal = time2;
             particleInstance2.SetActive(false);

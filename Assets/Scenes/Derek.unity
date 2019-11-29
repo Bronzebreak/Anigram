@@ -4640,14 +4640,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4391193234116894, guid: 58f2ea2a3000de041af42d9d904ce27b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114827198443993066, guid: 58f2ea2a3000de041af42d9d904ce27b,
         type: 3}
       propertyPath: m_EventMask.m_Bits
       value: 51
-      objectReference: {fileID: 0}
-    - target: {fileID: 4391193234116894, guid: 58f2ea2a3000de041af42d9d904ce27b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58f2ea2a3000de041af42d9d904ce27b, type: 3}

@@ -62,7 +62,7 @@ public class FollowPath : MonoBehaviour
 
     public void Awake()
     {
-        for (int points =0; points < MyPath.PathSequence.Length-2; points++ )
+        for (int points =0; points < MyPath.PathSequence.Length-1; points++ )
         {
             float distance = Vector3.Distance(MyPath.PathSequence[points].position, MyPath.PathSequence[points + 1].position);//gets the distance between two points next5 to each other in array.
             totalDistance = totalDistance + distance;// adds the distance between two points to total distance

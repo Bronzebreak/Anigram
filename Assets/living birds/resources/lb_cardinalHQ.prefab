@@ -1597,7 +1597,7 @@ MonoBehaviour:
   song2: {fileID: 8300000, guid: 88cd66932850c6c4fbbb742ec868491b, type: 3}
   flyAway1: {fileID: 8300000, guid: 9dabaef0cd2ecb241956e3db52d3bc8d, type: 3}
   flyAway2: {fileID: 8300000, guid: ae13220b2fee67344b8b455414c59ff4, type: 3}
-  fleeCrows: 1
+  fleeCrows: 0
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 0

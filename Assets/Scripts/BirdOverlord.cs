@@ -38,13 +38,21 @@ public class BirdOverlord : MonoBehaviour
         {
             idealNumberOfBirds = maximumNumberOfBirds - 1;
         }
-        
+
+        myBirdTypes.Add("P_Robin");
+        myBirdTypes.Add("P_BlueJay");
+        myBirdTypes.Add("P_Cardinal");
+        myBirdTypes.Add("P_Chickadee");
+        myBirdTypes.Add("P_Sparrow");
+        myBirdTypes.Add("P_GoldFinch");
+        myBirdTypes.Add("P_Crow");
+
         //Instantiate birds based on amounts and bird types
         myBirds = new GameObject[maximumNumberOfBirds];
         GameObject bird;
         for (int i = 0; i < myBirds.Length; i++)
         {
-            bird = Resources.Load(myBirdTypes[Random.Range(0, myBirdTypes.Count)] + "HQ", typeof(GameObject)) as GameObject;
+            bird = Resources.Load(myBirdTypes[Random.Range(0, myBirdTypes.Count)], typeof(GameObject)) as GameObject;
             myBirds[i] = Instantiate(bird, Vector3.zero, Quaternion.identity) as GameObject;
             myBirds[i].transform.localScale = myBirds[i].transform.localScale * birdScale;
             myBirds[i].transform.parent = transform;

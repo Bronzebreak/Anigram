@@ -22,7 +22,7 @@ public class Bird : MonoBehaviour
     public AudioClip flyAway2;
 
     Animator anim;
-    lb_BirdController controller;
+    BirdOverlord controller;
 
     bool paused = false;
     bool idle = true;
@@ -516,7 +516,7 @@ public class Bird : MonoBehaviour
     }
       */
 
-    void SetController(lb_BirdController cont)
+    void SetController(BirdOverlord cont)
     {
         controller = cont;
     }

@@ -7,6 +7,7 @@ public class daynight_cycle : MonoBehaviour
     //Wind Particle Variables
     public FollowPath followPathRef; //reference to script in first particle
     public FollowPath followPathRef2; //reference to script in second particle
+    public FollowPath followPathRef3; //reference to script in second particle
     public GameObject inhaleSpawnPoint;
     public GameObject exhaleSpawnPoint;//Spawn Point of the wind
     float time1 = 2.3f; // initial time of the inhale cycle
@@ -17,6 +18,9 @@ public class daynight_cycle : MonoBehaviour
     public GameObject particleInstance1; // instantiated object
     public GameObject particlePrefab2;
     public GameObject particleInstance2;
+    
+    public GameObject particlePrefab3;
+    public GameObject particleInstance3;
 
     // day night cycle variables
     public Light sun;
@@ -181,20 +185,18 @@ public class daynight_cycle : MonoBehaviour
 
             particleInstance1 = Instantiate(particlePrefab1, inhaleSpawnPoint.transform.position, Quaternion.identity);
             followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
-            followPathRef.TimeTotal = time1;
-            particleInstance1.SetActive(false);
-            particleInstance2 = Instantiate(particlePrefab2, exhaleSpawnPoint.transform.position, Quaternion.identity);
+            followPathRef.TimeTotal1 = time1;
+            followPathRef.TimeTotal2 = time2;
+                        particleInstance2 = Instantiate(particlePrefab2, inhaleSpawnPoint.transform.position, Quaternion.identity);
             followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
-            followPathRef2.TimeTotal = time2;
-            particleInstance2.SetActive(false);
-            yield return new WaitForSeconds(timeDelay);
-            particleInstance1.SetActive(true);
-            yield return new WaitForSeconds(time1 + timeDelay);
-            Destroy(particleInstance1);
+            followPathRef2.TimeTotal1 = time1;
+            followPathRef2.TimeTotal2 = time2;
+                        particleInstance3 = Instantiate(particlePrefab3, inhaleSpawnPoint.transform.position, Quaternion.identity);
+            followPathRef3 = particleInstance3.GetComponentInChildren<FollowPath>();
+            followPathRef3.TimeTotal1 = time1;
+            followPathRef3.TimeTotal2 = time2;
             particleInstance2.SetActive(true);
-            yield return new WaitForSeconds(time2 + timeDelay);
-            particleInstance2.SetActive(false);
-            Destroy(particleInstance2);
+            yield return new WaitForSeconds(time1 + timeDelay);
         }
     }
 }

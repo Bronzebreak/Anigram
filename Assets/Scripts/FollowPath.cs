@@ -17,9 +17,11 @@ public class FollowPath : MonoBehaviour
 
     public MovementType Type = MovementType.MoveTowards; // Movement type used
     public MovementPath MyPath; // Reference to Movement Path Used
-    private float Speed ; // Speed object is moving
-    public float TimeTotal = 0.0f; // Time it takes to complete the loop
-    float totalDistance = 0.0f;
+    private float Speed1 ; // Speed object is moving
+    public float TimeTotal1 = 0.0f; // Time it takes to complete the loop
+    public float TimeTotal2 = 0.0f; // Time it takes to complete the loop
+    float totalDistance1 = 0.0f;
+    float totalDistance2 = 0.0f;
     public float MaxDistanceToGoal = .1f; // How close does it have to be to the point to be considered at point
     #endregion //Public Variables
 
@@ -62,13 +64,16 @@ public class FollowPath : MonoBehaviour
 
     public void Awake()
     {
-        for (int points =0; points < MyPath.PathSequence.Length-1; points++ )
+        for (int points =0; points < 12; points++ )
         {
             float distance = Vector3.Distance(MyPath.PathSequence[points].position, MyPath.PathSequence[points + 1].position);//gets the distance between two points next5 to each other in array.
-            totalDistance = totalDistance + distance;// adds the distance between two points to total distance
-            
+            totalDistance1 = totalDistance1 + distance;// adds the distance between two points to total distance 
         }
-        
+        for (int points =12; points < MyPath.PathSequence.Length-1; points++ )
+        {
+            float distance = Vector3.Distance(MyPath.PathSequence[points].position, MyPath.PathSequence[points + 1].position);//gets the distance between two points next5 to each other in array.
+            totalDistance2 = totalDistance2 + distance;// adds the distance between two points to total distance 
+        }
         
         
     }
@@ -76,7 +81,7 @@ public class FollowPath : MonoBehaviour
     public void Start()
     {
         StartCoroutine(Wait());
-        print(TimeTotal);
+        
     }
 
     //Update is called by Unity every frame
@@ -92,18 +97,26 @@ public class FollowPath : MonoBehaviour
 
         if (Type == MovementType.MoveTowards) //If you are using MoveTowards movement type
         {
-            //Move to the next point in path using MoveTowards
-            transform.position =
-                Vector3.MoveTowards(transform.position,
+            if (MyPath.movingTo < 12 && MyPath.movingTo > -1)
+                {
+                transform.position = Vector3.MoveTowards(transform.position,
                                     pointInPath.Current.position,
-                                    Time.deltaTime * (totalDistance / TimeTotal));
+                                    Time.deltaTime * (totalDistance1 / TimeTotal1));
+
+                }
+                //Move to the next point in path using MoveTowards
+            else{
+                                transform.position = Vector3.MoveTowards(transform.position,
+                                    pointInPath.Current.position,
+                                    Time.deltaTime * (totalDistance2 / TimeTotal2));
+            }
         }
         else if (Type == MovementType.LerpTowards) //If you are using LerpTowards movement type
         {
             //Move towards the next point in path using Lerp
             transform.position = Vector3.Lerp(transform.position,
                                                 pointInPath.Current.position,
-                                                Time.deltaTime * (totalDistance / TimeTotal));
+                                                Time.deltaTime * (totalDistance2 / TimeTotal1));
         }
 
         //Check to see if you are close enough to the next point to start moving to the following one

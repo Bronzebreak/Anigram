@@ -42,11 +42,11 @@ public class WindControll : MonoBehaviour
             timeDelay = 0.3f + (0.3f * (timeNow / 300.0f));
             particleInstance1 = Instantiate(particlePrefab1, spawnPoint.transform.position, Quaternion.identity);
             followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
-            followPathRef.TimeTotal = time1;
+            followPathRef.TimeTotal1 = time1;
             particleInstance1.SetActive(false);
             particleInstance2 = Instantiate(particlePrefab2, spawnPoint.transform.position, Quaternion.identity);
             followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
-            followPathRef2.TimeTotal = time2;
+            followPathRef2.TimeTotal1 = time2;
             particleInstance2.SetActive(false);
             yield return new WaitForSeconds(timeDelay);
             particleInstance1.SetActive(true);

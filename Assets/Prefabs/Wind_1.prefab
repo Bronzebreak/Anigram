@@ -4864,7 +4864,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   MyPath: {fileID: 366337272105698684}
-  TimeTotal: 2
+  TimeTotal1: 0
+  TimeTotal2: 0
   MaxDistanceToGoal: 0.1
 --- !u!1 &366337271841205801
 GameObject:
@@ -4987,7 +4988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   i: 47
-  PathType: 0
+  PathType: 1
   movementDirection: 1
   movingTo: 0
   PathSequence:
@@ -5408,7 +5409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2336548159779124593}
   m_Layer: 0
-  m_Name: Wind_2
+  m_Name: Wind_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

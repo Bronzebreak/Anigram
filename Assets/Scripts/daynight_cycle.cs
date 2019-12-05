@@ -69,6 +69,12 @@ public class daynight_cycle : MonoBehaviour
     {
         sunInitialIntensity = sun.intensity;
         //InvokeRepeating("UpdateCycle", updateRateInSeconds, updateRateInSeconds);
+        particleInstance1 = Instantiate(particlePrefab1, inhaleSpawnPoint.transform.position, Quaternion.identity);
+        followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
+        particleInstance2 = Instantiate(particlePrefab2, inhaleSpawnPoint.transform.position, Quaternion.identity);
+        followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
+        particleInstance3 = Instantiate(particlePrefab3, inhaleSpawnPoint.transform.position, Quaternion.identity);
+        followPathRef3 = particleInstance3.GetComponentInChildren<FollowPath>();
         FullCircle(); // calls the function at the begining of the run
     }
 
@@ -183,20 +189,17 @@ public class daynight_cycle : MonoBehaviour
             time2 = 4 + (3 * (timeNow / (secondsInFullDay / 4)));// updates the time for the graduale increase of the exhale cycle
             timeDelay = 0.3f + (0.3f * (timeNow / (secondsInFullDay / 4)));// updates delay between cycles
 
-            particleInstance1 = Instantiate(particlePrefab1, inhaleSpawnPoint.transform.position, Quaternion.identity);
-            followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
+
             followPathRef.TimeTotal1 = time1;
             followPathRef.TimeTotal2 = time2;
-                        particleInstance2 = Instantiate(particlePrefab2, inhaleSpawnPoint.transform.position, Quaternion.identity);
-            followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
+
             followPathRef2.TimeTotal1 = time1;
             followPathRef2.TimeTotal2 = time2;
-                        particleInstance3 = Instantiate(particlePrefab3, inhaleSpawnPoint.transform.position, Quaternion.identity);
-            followPathRef3 = particleInstance3.GetComponentInChildren<FollowPath>();
+
             followPathRef3.TimeTotal1 = time1;
             followPathRef3.TimeTotal2 = time2;
-            particleInstance2.SetActive(true);
-            yield return new WaitForSeconds(time1 + timeDelay);
+
+            yield return new WaitForSeconds(time1 +time2+ timeDelay);
         }
     }
 }

@@ -14,10 +14,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Kayleigh.unity
     guid: 1c40db65507ad7947a258c25748622d0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/R_level3.unity
     guid: 910c814979e28a44ab18d89955386ac6
   - enabled: 0
     path: Assets/Scenes/BackUpLevel.unity
     guid: d91db23d66751c941ba6482946856e6b
+  - enabled: 1
+    path: Assets/Scenes/UpdatedLevel.unity
+    guid: 1316b5e333c3cf943ac2bfcde58f693c
   m_configObjects: {}

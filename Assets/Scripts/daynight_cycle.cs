@@ -6,8 +6,8 @@ public class daynight_cycle : MonoBehaviour
 {
     //Wind Particle Variables
     public FollowPath followPathRef; //reference to script in first particle
-    public FollowPath followPathRef2; //reference to script in second particle
-    public FollowPath followPathRef3; //reference to script in second particle
+    //public FollowPath followPathRef2; //reference to script in second particle
+    //public FollowPath followPathRef3; //reference to script in second particle
     public GameObject inhaleSpawnPoint;
     public GameObject exhaleSpawnPoint;//Spawn Point of the wind
     float time1 = 2.3f; // initial time of the inhale cycle
@@ -16,11 +16,11 @@ public class daynight_cycle : MonoBehaviour
     float timeNow; // time since the start of the program
     public GameObject particlePrefab1; // reference to prefabe
     public GameObject particleInstance1; // instantiated object
-    public GameObject particlePrefab2;
+   /* public GameObject particlePrefab2;
     public GameObject particleInstance2;
     
     public GameObject particlePrefab3;
-    public GameObject particleInstance3;
+    public GameObject particleInstance3;*/
 
     // day night cycle variables
     public Light sun;
@@ -71,10 +71,10 @@ public class daynight_cycle : MonoBehaviour
         //InvokeRepeating("UpdateCycle", updateRateInSeconds, updateRateInSeconds);
         particleInstance1 = Instantiate(particlePrefab1, inhaleSpawnPoint.transform.position, Quaternion.identity);
         followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
-        particleInstance2 = Instantiate(particlePrefab2, inhaleSpawnPoint.transform.position, Quaternion.identity);
+       /* particleInstance2 = Instantiate(particlePrefab2, inhaleSpawnPoint.transform.position, Quaternion.identity);
         followPathRef2 = particleInstance2.GetComponentInChildren<FollowPath>();
         particleInstance3 = Instantiate(particlePrefab3, inhaleSpawnPoint.transform.position, Quaternion.identity);
-        followPathRef3 = particleInstance3.GetComponentInChildren<FollowPath>();
+        followPathRef3 = particleInstance3.GetComponentInChildren<FollowPath>();*/
         FullCircle(); // calls the function at the begining of the run
     }
 
@@ -193,11 +193,11 @@ public class daynight_cycle : MonoBehaviour
             followPathRef.TimeTotal1 = time1;
             followPathRef.TimeTotal2 = time2;
 
-            followPathRef2.TimeTotal1 = time1;
-            followPathRef2.TimeTotal2 = time2;
+            //followPathRef2.TimeTotal1 = time1;
+            //followPathRef2.TimeTotal2 = time2;
 
-            followPathRef3.TimeTotal1 = time1;
-            followPathRef3.TimeTotal2 = time2;
+            //followPathRef3.TimeTotal1 = time1;
+            //followPathRef3.TimeTotal2 = time2;
 
             yield return new WaitForSeconds(time1 +time2+ timeDelay);
         }

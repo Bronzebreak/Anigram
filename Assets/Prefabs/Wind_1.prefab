@@ -2168,7 +2168,7 @@ ParticleSystem:
         m_RotationOrder: 4
     inWorldSpace: 0
   InheritVelocityModule:
-    enabled: 1
+    enabled: 0
     m_Mode: 1
     m_Curve:
       serializedVersion: 2
@@ -4864,8 +4864,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   MyPath: {fileID: 366337272105698684}
-  TimeTotal1: 0
-  TimeTotal2: 0
+  TimeTotal1: 2
+  TimeTotal2: 4
   MaxDistanceToGoal: 0.1
 --- !u!1 &366337271841205801
 GameObject:

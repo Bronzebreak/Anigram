@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Kayleigh.unity
     guid: 1c40db65507ad7947a258c25748622d0
   - enabled: 0
-    path: Assets/Scenes/R_level3.unity
+    path: Assets/Scenes/Reagan.unity
     guid: 910c814979e28a44ab18d89955386ac6
   - enabled: 0
     path: Assets/Scenes/BackUpLevel.unity

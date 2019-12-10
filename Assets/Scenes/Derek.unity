@@ -1857,16 +1857,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.256454
       objectReference: {fileID: 0}
-    - target: {fileID: 33000010145261860, guid: 0ef9a4657e0594f9c98b343ef29e6132,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 9319e3a1ab5b84aec9c02f29bbb7f945, type: 2}
     - target: {fileID: 23000013381656344, guid: 0ef9a4657e0594f9c98b343ef29e6132,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a8de44ea2eb7147d2a52023b41229d3d, type: 2}
+    - target: {fileID: 33000010145261860, guid: 0ef9a4657e0594f9c98b343ef29e6132,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 9319e3a1ab5b84aec9c02f29bbb7f945, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef9a4657e0594f9c98b343ef29e6132, type: 3}
 --- !u!1 &261833240
@@ -11153,15 +11153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222affe85c283c146a8da1e2474168d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followPathRef: {fileID: 0}
-  inhaleSpawnPoint: {fileID: 0}
-  exhaleSpawnPoint: {fileID: 0}
   inhaleTime: 2.3
   exhaleTime: 4.3
   breathDelay: 0.3
-  particlePrefab1: {fileID: 2336548159779124592, guid: c87d47736fd496945991de6ee3b9c624,
-    type: 3}
-  particleInstance1: {fileID: 0}
   sun: {fileID: 1814096326}
   secondsInFullDay: 1200
   currentTimeOfDay: 0

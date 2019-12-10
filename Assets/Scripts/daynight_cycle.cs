@@ -5,15 +5,10 @@ using UnityEngine;
 public class daynight_cycle : MonoBehaviour
 {
     //Wind Particle Variables
-    public FollowPath followPathRef; //reference to script in first particle
-    public GameObject inhaleSpawnPoint;
-    public GameObject exhaleSpawnPoint;//Spawn Point of the wind
     public float inhaleTime = 2.3f; // initial time of the inhale cycle
     public float exhaleTime = 4.3f; // initial time of exhale cycle
     public float breathDelay = 0.3f; // delay between inhale and exhale
     float timeSinceLaunch; // time since the start of the program
-    public GameObject particlePrefab1; // reference to prefabe
-    public GameObject particleInstance1; // instantiated object
 
     // day night cycle variables
     public Light sun;
@@ -34,8 +29,6 @@ public class daynight_cycle : MonoBehaviour
     void Start()
     {
         sunInitialIntensity = sun.intensity;
-        particleInstance1 = Instantiate(particlePrefab1, inhaleSpawnPoint.transform.position, Quaternion.identity);
-        followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
         FullCircle(); // calls the function at the begining of the run
     }
 
@@ -85,10 +78,6 @@ public class daynight_cycle : MonoBehaviour
             inhaleTime = 2 + (timeSinceLaunch / (secondsInFullDay/4)); //Gradually updates the time towards 3, based off of how close time/timeTotal is to 1
             exhaleTime = 4 + (3 * (timeSinceLaunch / (secondsInFullDay / 4))); //Gradually updates the time towards 7, based off of how close time/timeTotal is to 1
             breathDelay = 0.3f + (0.3f * (timeSinceLaunch / (secondsInFullDay / 4))); //Gradually updates the time towards .6, based off of how close time/timeTotal is to 1
-
-            followPathRef.TimeTotal1 = inhaleTime;
-            followPathRef.TimeTotal2 = exhaleTime;
-
             yield return new WaitForSeconds(inhaleTime + breathDelay + exhaleTime + breathDelay);
         }
     }

@@ -12,15 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Derek.unity
     guid: 82243ae0f0048d34785dc6f3f90e5e72
   - enabled: 0
-    path: Assets/Scenes/Kayleigh.unity
-    guid: 1c40db65507ad7947a258c25748622d0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Reagan.unity
+    path: Assets/Scenes/R_level3.unity
     guid: 910c814979e28a44ab18d89955386ac6
   - enabled: 0
-    path: Assets/Scenes/BackUpLevel.unity
-    guid: d91db23d66751c941ba6482946856e6b
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/UpdatedLevel.unity
-    guid: 1316b5e333c3cf943ac2bfcde58f693c
+    path: Assets/Scenes/Reagan.unity
+    guid: a0b1e35cc0ff6ec48b72dea54723a8a6
   m_configObjects: {}

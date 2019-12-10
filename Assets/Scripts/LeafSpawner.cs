@@ -33,7 +33,7 @@ public class LeafSpawner : MonoBehaviour
         //Set values for the position of the top and bottom of the breathing cycle, and spawn a publicly chosen actor at the bottom position.
         bottomPos = bottomPoint.transform.position;
         topPos = topPoint.transform.position;
-        particleSys = Instantiate(particlePrefab, bottomPos, bottomPoint.transform.rotation);
+        particleSys = Instantiate(particlePrefab, bottomPos, bottomPoint.transform.rotation, transform);
 
         //Begin coroutine Loop.
         StartCoroutine(Loop());
@@ -59,22 +59,13 @@ public class LeafSpawner : MonoBehaviour
 
     void Move(Vector3 start, Vector3 end, float targetTime)
     {
-        ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSys.particleCount + 1];
+        ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSys.particleCount];
+        particleSys.GetParticles(particles);
         for (int index = 0; index < particleSys.particleCount ; index++)
         {
-            ParticleSystem.Particle particle = particles[index];
-            particle.position = Vector3.Lerp(start, end, Mathf.SmoothStep(0, targetTime, (time / targetTime)));
-            print(index);
+            particles[index].position = Vector3.Lerp(start, end, Mathf.SmoothStep(0, 1, (time / targetTime)));
         }
-
-        /*
-        foreach (ParticleSystem.Particle particle in particles)
-        {
-            particle.position = Vector3.Lerp(start, end, Mathf.SmoothStep(0, targetTime, (time / targetTime)));
-        }
-        ...tween the particle from the start to end, based off of what the current time is compared to the full time for the process to end.
-        particleActor.transform.position = Vector3.Lerp(start, end, (time / targetTime));
-        */
+        particleSys.SetParticles(particles);
     }
 
     //Once a frame...

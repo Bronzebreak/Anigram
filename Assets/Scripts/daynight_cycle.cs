@@ -75,10 +75,11 @@ public class daynight_cycle : MonoBehaviour
     {
         while (true)
         {
+            //After breathing cycle...
+            yield return new WaitForSeconds(inhaleTime + breathDelay + exhaleTime + breathDelay);
             inhaleTime = 2 + (timeSinceLaunch / (secondsInFullDay/4)); //Gradually updates the time towards 3, based off of how close time/timeTotal is to 1
             exhaleTime = 4 + (3 * (timeSinceLaunch / (secondsInFullDay / 4))); //Gradually updates the time towards 7, based off of how close time/timeTotal is to 1
             breathDelay = 0.3f + (0.3f * (timeSinceLaunch / (secondsInFullDay / 4))); //Gradually updates the time towards .6, based off of how close time/timeTotal is to 1
-            yield return new WaitForSeconds(inhaleTime + breathDelay + exhaleTime + breathDelay);
         }
     }
 }

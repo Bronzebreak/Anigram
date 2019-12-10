@@ -13,6 +13,10 @@ public class LeafSpawner : MonoBehaviour
     public float time;
     public ParticleSystem particlePrefab;
     public ParticleSystem particleSys;
+    float randomRange;
+    int randomMin = -10;
+    int randomMax = 10;
+    Vector3[] randomVariance = new Vector3[10];
 
     public enum BreathingMode
     {
@@ -47,13 +51,25 @@ public class LeafSpawner : MonoBehaviour
         {
             //...update breathing mode dependent on breathing cycle, as determined by the timeOverlord.
             currentMode = BreathingMode.inhaling;
+            VariateRandomly();
             yield return new WaitForSecondsRealtime(timeOverlord.inhaleTime);
             currentMode = BreathingMode.delay;
+            VariateRandomly();
             yield return new WaitForSecondsRealtime(timeOverlord.breathDelay);
             currentMode = BreathingMode.exhaling;
+            VariateRandomly();
             yield return new WaitForSecondsRealtime(timeOverlord.exhaleTime);
             currentMode = BreathingMode.delay;
+            VariateRandomly();
             yield return new WaitForSecondsRealtime(timeOverlord.breathDelay);
+        }
+    }
+
+    void VariateRandomly()
+    {
+        for(int index = 0; index < particleSys.particleCount; index ++)
+        {
+            randomVariance[index] = new Vector3(Random.Range(randomMin,randomMax),0,Random.Range(randomMin,randomMax));
         }
     }
 
@@ -61,9 +77,9 @@ public class LeafSpawner : MonoBehaviour
     {
         ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSys.particleCount];
         particleSys.GetParticles(particles);
-        for (int index = 0; index < particleSys.particleCount ; index++)
+        for (int index = 0; index < particleSys.particleCount; index++)
         {
-            particles[index].position = Vector3.Lerp(start, end, Mathf.SmoothStep(0, 1, (time / targetTime)));
+            particles[index].position = Vector3.Lerp(start, end + randomVariance[index], Mathf.SmoothStep(0, 1, (time / targetTime)));
         }
         particleSys.SetParticles(particles);
     }

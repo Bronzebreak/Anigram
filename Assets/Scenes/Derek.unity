@@ -334,58 +334,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &27762461
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 27762462}
-  - component: {fileID: 27762464}
-  m_Layer: 0
-  m_Name: Overlord
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &27762462
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27762461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1963121963}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &27762464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 27762461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e825c8d9cc96385498a59add9bf5c831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 1671943395006712, guid: 8ae7718c33e89b042b204b36902c7745, type: 3}
-  particleActor: {fileID: 0}
-  bottomPoint: {fileID: 268882127}
-  topPoint: {fileID: 33371739}
-  timeOverlord: {fileID: 0}
-  topPos: {x: 0, y: 0, z: 0}
-  bottomPos: {x: 0, y: 0, z: 0}
-  time: 0
-  currentMode: 0
 --- !u!1001 &28302569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,7 +611,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1963121963}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &45271901
 PrefabInstance:
@@ -1857,16 +1805,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.256454
       objectReference: {fileID: 0}
-    - target: {fileID: 33000010145261860, guid: 0ef9a4657e0594f9c98b343ef29e6132,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 9319e3a1ab5b84aec9c02f29bbb7f945, type: 2}
     - target: {fileID: 23000013381656344, guid: 0ef9a4657e0594f9c98b343ef29e6132,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a8de44ea2eb7147d2a52023b41229d3d, type: 2}
+    - target: {fileID: 33000010145261860, guid: 0ef9a4657e0594f9c98b343ef29e6132,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 9319e3a1ab5b84aec9c02f29bbb7f945, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef9a4657e0594f9c98b343ef29e6132, type: 3}
 --- !u!1 &261833240
@@ -2040,7 +1988,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1963121963}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282304697
 GameObject:
@@ -3267,7 +3215,7 @@ Transform:
   - {fileID: 473654438}
   - {fileID: 1083946950}
   m_Father: {fileID: 1963121963}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525802768
 GameObject:
@@ -11079,7 +11027,7 @@ Transform:
   m_Children:
   - {fileID: 965943626}
   m_Father: {fileID: 1963121963}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1814096326
 Light:
@@ -11153,15 +11101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222affe85c283c146a8da1e2474168d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followPathRef: {fileID: 0}
-  inhaleSpawnPoint: {fileID: 0}
-  exhaleSpawnPoint: {fileID: 0}
   inhaleTime: 2.3
   exhaleTime: 4.3
   breathDelay: 0.3
-  particlePrefab1: {fileID: 2336548159779124592, guid: c87d47736fd496945991de6ee3b9c624,
-    type: 3}
-  particleInstance1: {fileID: 0}
   sun: {fileID: 1814096326}
   secondsInFullDay: 1200
   currentTimeOfDay: 0
@@ -11994,7 +11936,6 @@ Transform:
   m_Children:
   - {fileID: 525802770}
   - {fileID: 1197059102}
-  - {fileID: 27762462}
   - {fileID: 1814096325}
   - {fileID: 522932597}
   - {fileID: 268882128}

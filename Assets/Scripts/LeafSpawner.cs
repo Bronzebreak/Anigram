@@ -14,8 +14,8 @@ public class LeafSpawner : MonoBehaviour
     public ParticleSystem particlePrefab;
     public ParticleSystem particleSys;
     float randomRange;
-    int randomMin = -10;
-    int randomMax = 10;
+    int randomMin = -20;
+    int randomMax = 20;
     Vector3[] randomVariance = new Vector3[10];
 
     public enum BreathingMode

@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Audio;
 public class daynight_cycle : MonoBehaviour
 {
+    public AudioMixer mixer;
+
+    public AudioClip breathingSound; 
+    public AudioSource breathingSource;
     //Wind Particle Variables
     public FollowPath followPathRef; //reference to script in first particle
     public GameObject inhaleSpawnPoint;
@@ -33,14 +37,19 @@ public class daynight_cycle : MonoBehaviour
     }
     void Start()
     {
+        breathingSource.clip = breathingSound;
+        breathingSource.Play(0); 
+        mixer.AudioMixer.SetFloat(pitchBlend, 1.0f,1.5f);
         sunInitialIntensity = sun.intensity;
         particleInstance1 = Instantiate(particlePrefab1, inhaleSpawnPoint.transform.position, Quaternion.identity);
         followPathRef = particleInstance1.GetComponentInChildren<FollowPath>();
         FullCircle(); // calls the function at the begining of the run
+       
     }
 
     void Update()
     {
+
         timeSinceLaunch = Time.realtimeSinceStartup; // sets timne to the runtime of the programm
 
         UpdateSun();
@@ -51,7 +60,7 @@ public class daynight_cycle : MonoBehaviour
         {
             currentTimeOfDay -= 1;
         }
-
+        breathingSource.pitch = (1.1f - (timeSinceLaunch / (secondsInFullDay ))) ;
         sun.color = sunset.Evaluate(currentTimeOfDay);
     }
 

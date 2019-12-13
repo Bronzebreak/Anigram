@@ -3255,6 +3255,17 @@ MonoBehaviour:
   particlePrefab: {fileID: 6245683715328574561, guid: bed7e8408a8ec3447b31fb5c04100b41,
     type: 3}
   particleSys: {fileID: 0}
+  particlePositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   currentMode: 0
 --- !u!4 &525802770
 Transform:
@@ -11101,8 +11112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222affe85c283c146a8da1e2474168d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inhaleTime: 2.3
-  exhaleTime: 4.3
+  inhaleTime: 2
+  exhaleTime: 4
   breathDelay: 0.3
   sun: {fileID: 1814096326}
   secondsInFullDay: 1200

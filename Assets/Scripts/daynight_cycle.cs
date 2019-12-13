@@ -7,8 +7,8 @@ public class daynight_cycle : MonoBehaviour
     //public AudioMixer mixer;
     //public AudioClip breathingSound; 
     //public AudioSource breathingSource;
-    public float inhaleTime = 2.3f; // initial time of the inhale cycle
-    public float exhaleTime = 4.3f; // initial time of exhale cycle
+    public float inhaleTime = 2f; // initial time of the inhale cycle
+    public float exhaleTime = 4f; // initial time of exhale cycle
     public float breathDelay = 0.3f; // delay between inhale and exhale
     float timeSinceLaunch; // time since the start of the program
 
@@ -82,9 +82,9 @@ public class daynight_cycle : MonoBehaviour
         {
             //After breathing cycle...
             yield return new WaitForSeconds(inhaleTime + breathDelay + exhaleTime + breathDelay);
-            inhaleTime = 2 + (timeSinceLaunch / (secondsInFullDay/4)); //Gradually updates the time towards 3, based off of how close time/timeTotal is to 1
-            exhaleTime = 4 + (3 * (timeSinceLaunch / (secondsInFullDay / 4))); //Gradually updates the time towards 7, based off of how close time/timeTotal is to 1
-            breathDelay = 0.3f + (0.3f * (timeSinceLaunch / (secondsInFullDay / 4))); //Gradually updates the time towards .6, based off of how close time/timeTotal is to 1
+            inhaleTime = 2 + (timeSinceLaunch / (300)); //Gradually updates the time towards 3, based off of how close time/timeTotal is to 1
+            exhaleTime = 4 + (3 * (timeSinceLaunch / (300))); //Gradually updates the time towards 7, based off of how close time/timeTotal is to 1
+            breathDelay = 0.3f + (0.3f * (timeSinceLaunch / 300)); //Gradually updates the time towards .6, based off of how close time/timeTotal is to 1
         }
     }
 }

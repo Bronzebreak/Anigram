@@ -17,6 +17,8 @@ public class LeafSpawner : MonoBehaviour
     int randomMin = -20;
     int randomMax = 20;
     Vector3[] randomVariance = new Vector3[10];
+    ParticleSystem.Particle[] particles = new ParticleSystem.Particle[10];
+    public Vector3[] particlePositions = new Vector3[10];
 
     public enum BreathingMode
     {
@@ -50,15 +52,19 @@ public class LeafSpawner : MonoBehaviour
         while (true)
         {
             //...update breathing mode dependent on breathing cycle, as determined by the timeOverlord.
+            StorePositions();
             currentMode = BreathingMode.inhaling;
             VariateRandomly();
             yield return new WaitForSecondsRealtime(timeOverlord.inhaleTime);
+            StorePositions();
             currentMode = BreathingMode.delay;
             VariateRandomly();
             yield return new WaitForSecondsRealtime(timeOverlord.breathDelay);
+            StorePositions();
             currentMode = BreathingMode.exhaling;
             VariateRandomly();
             yield return new WaitForSecondsRealtime(timeOverlord.exhaleTime);
+            StorePositions();
             currentMode = BreathingMode.delay;
             VariateRandomly();
             yield return new WaitForSecondsRealtime(timeOverlord.breathDelay);
@@ -73,13 +79,20 @@ public class LeafSpawner : MonoBehaviour
         }
     }
 
-    void Move(Vector3 start, Vector3 end, float targetTime)
+    void StorePositions()
     {
-        ParticleSystem.Particle[] particles = new ParticleSystem.Particle[particleSys.particleCount];
+        for (int index = 0; index < particleSys.particleCount; index++)
+        {
+            particlePositions[index] = particles[index].position;
+        }
+    }
+
+    void Move(Vector3 start, Vector3 end, float targetTime, float size)
+    {
         particleSys.GetParticles(particles);
         for (int index = 0; index < particleSys.particleCount; index++)
         {
-            particles[index].position = Vector3.Lerp(start, end + randomVariance[index], Mathf.SmoothStep(0, 1, (time / targetTime)));
+            particles[index].position = Vector3.Lerp(particlePositions[index], end + (randomVariance[index]/size), Mathf.SmoothStep(0, 1, (time / targetTime)));
         }
         particleSys.SetParticles(particles);
     }
@@ -95,11 +108,11 @@ public class LeafSpawner : MonoBehaviour
         {
             //...move from the bottom to top.
             case BreathingMode.inhaling:
-                Move(bottomPos, topPos, timeOverlord.inhaleTime);
+                Move(bottomPos, topPos, timeOverlord.inhaleTime, 4);
                 break;
             //...move from the top to bottom.
             case BreathingMode.exhaling:
-                Move(topPos, bottomPos, timeOverlord.exhaleTime);
+                Move(topPos, bottomPos, timeOverlord.exhaleTime, 1);
                 break;
             //...reset time.
             case BreathingMode.delay:

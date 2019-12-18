@@ -131,7 +131,7 @@ public class lb_Bird : MonoBehaviour {
 		onGround = false;
 		GetComponent<Rigidbody>().isKinematic = false;
 		GetComponent<Rigidbody>().velocity = Vector3.zero;
-		GetComponent<Rigidbody>().drag = 0.5f;
+		GetComponent<Rigidbody>().drag = 1f;
 		anim.applyRootMotion = false;
 		anim.SetBool (flyingBoolHash,true);
 		anim.SetBool(landingBoolHash, false);
@@ -362,7 +362,7 @@ public class lb_Bird : MonoBehaviour {
 		}
 		if(idle){
 			//the bird is in the idle animation, lets randomly choose a behavior every 3 seconds
-			if (Random.value < Time.deltaTime*.33){
+			if (Random.value < Time.deltaTime*.55){
 				//bird will display a behavior
 				//in the perched state the bird can only sing, preen, or ruffle
 				float rand = Random.value;

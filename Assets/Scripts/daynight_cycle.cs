@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.Audio;
 public class daynight_cycle : MonoBehaviour
 {
-    //public AudioMixer mixer;
-    //public AudioClip breathingSound; 
-    //public AudioSource breathingSource;
+    public AudioClip inhaleSound;
+    public AudioClip exhaleSound;
+    bool keepFadingIn;
+    bool keepFadingOut;
+    public AudioSource InhaleSource;
+    public AudioSource ExhaleSource;
     public float inhaleTime = 2f; // initial time of the inhale cycle
     public float exhaleTime = 4f; // initial time of exhale cycle
     public float breathDelay = 0.3f; // delay between inhale and exhale
@@ -25,25 +28,36 @@ public class daynight_cycle : MonoBehaviour
 
     public void FullCircle()
     {
-        StartCoroutine(Timer()); // starts inhale exghale cycle
+        StartCoroutine(Breathing()); // starts inhale exghale cycle
     }
 
     void Start()
     {
-        //breathingSource.clip = breathingSound;
-        //breathingSource.Play(0); 
-        //mixer.AudioMixer.SetFloat(pitchBlend, 1.0f,1.5f);
+        InhaleSource.clip = inhaleSound;
         sunInitialIntensity = sun.intensity;
         FullCircle(); // calls the function at the begining of the run
     }
 
     void Update()
     {
-        timeSinceLaunch = Time.realtimeSinceStartup; // sets timne to the runtime of the programm
+        //print(InhaleSource.volume);
+        if (!InhaleSource.isPlaying)
+        {
 
+            print("End");
+            //InhaleSource.volume = 0.9f;
+        }
+        if (!ExhaleSource.isPlaying)
+        {
+
+            print("End");
+            //ExhaleSource.volume = 0.9f;
+        }
+        timeSinceLaunch = Time.realtimeSinceStartup; // sets timne to the runtime of the programm
+        //print(breathingSource.volume);
         UpdateSun();
         //currentTimeOfDay += (Time.deltaTime / secondsInFullDay) * timeMultiplier;
-        currentTimeOfDay =( 0.45f + (Time.realtimeSinceStartup/secondsInFullDay) ) * timeMultiplier;
+        currentTimeOfDay = (0.45f + (Time.realtimeSinceStartup / secondsInFullDay)) * timeMultiplier;
 
         if (currentTimeOfDay >= 1)
         {
@@ -76,15 +90,67 @@ public class daynight_cycle : MonoBehaviour
         sun.intensity = sunInitialIntensity * intensityMultiplier;
     }
 
-    IEnumerator Timer()
+    IEnumerator Breathing()
     {
         while (true)
         {
+            StartCoroutine(StartFadeInhale(InhaleSource, inhaleTime + 0.1f, 0.0f));
+
+            yield return new WaitForSeconds(inhaleTime + breathDelay);
+            StartCoroutine(StartFadeInhale(ExhaleSource, exhaleTime + 0.1f, 0.0f));
+            yield return new WaitForSeconds(exhaleTime + breathDelay);
             //After breathing cycle...
-            yield return new WaitForSeconds(inhaleTime + breathDelay + exhaleTime + breathDelay);
             inhaleTime = 2 + (timeSinceLaunch / (300)); //Gradually updates the time towards 3, based off of how close time/timeTotal is to 1
             exhaleTime = 4 + (3 * (timeSinceLaunch / (300))); //Gradually updates the time towards 7, based off of how close time/timeTotal is to 1
             breathDelay = 0.3f + (0.3f * (timeSinceLaunch / 300)); //Gradually updates the time towards .6, based off of how close time/timeTotal is to 1
         }
     }
+    /*
+
+        IEnumerator FadeIN(AudioSource breath, float speed, float maxVolume)
+        {
+            keepFadingIn = true;
+            keepFadingOut = false;
+            breath.volume = 0;
+            float AudioVolume = breath.volume;
+            while (breath.volume< maxVolume && keepFadingIn)
+            {
+                AudioVolume += speed;
+                breath.volume = AudioVolume;
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        IEnumerator FadeOUT(AudioSource breath, float speed)
+        {
+            keepFadingIn = false;
+            keepFadingOut = true;
+
+            float AudioVolume = breath.volume;
+            while (breath.volume >= speed && keepFadingOut)
+            {
+                AudioVolume -= speed;
+                breath.volume = AudioVolume;
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        */
+    public IEnumerator StartFadeInhale(AudioSource audioSource, float duration, float targetVolume)
+    {
+        audioSource.volume = 0.8f;
+        //yield return new WaitForSeconds(0.1f);
+        audioSource.Play();
+
+        float currentTime = 0;
+        float start = audioSource.volume;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+
+        }
+        yield break;
+    }
 }
+  

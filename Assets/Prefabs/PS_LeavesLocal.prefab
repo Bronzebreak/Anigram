@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6449065637626949110, guid: bed7e8408a8ec3447b31fb5c04100b41,
         type: 3}
       propertyPath: m_Name
-      value: PS_Leaves
+      value: PS_LeavesLocal
       objectReference: {fileID: 0}
     - target: {fileID: 6245683715328574561, guid: bed7e8408a8ec3447b31fb5c04100b41,
         type: 3}
@@ -71,6 +71,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3765519427127266118, guid: bed7e8408a8ec3447b31fb5c04100b41,
+        type: 3}
+      propertyPath: m_RenderAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bed7e8408a8ec3447b31fb5c04100b41, type: 3}

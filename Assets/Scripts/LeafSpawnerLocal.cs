@@ -96,6 +96,18 @@ public class LeafSpawnerLocal : MonoBehaviour
         for (int index = 0; index < particleSys.particleCount; index++)
         {
             particles[index].position = Vector3.Lerp(particlePositions[index], end + (randomVariance[index] / size), Mathf.SmoothStep(0, 1, (time / targetTime)));
+
+            if (currentMode == BreathingMode.inhaling)
+            {
+                Material myMat = particleSys.GetComponent<Renderer>().material;
+                myMat.color = leafColour.Evaluate(1-(time / targetTime));
+            }
+
+            else if (currentMode == BreathingMode.exhaling)
+            {
+                Material myMat = particleSys.GetComponent<Renderer>().material;
+                myMat.color = leafColour.Evaluate(time / targetTime);
+            }
         }
         particleSys.SetParticles(particles);
     }

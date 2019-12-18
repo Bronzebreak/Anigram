@@ -2181,7 +2181,7 @@ PrefabInstance:
     - target: {fileID: 114827198443993066, guid: 58f2ea2a3000de041af42d9d904ce27b,
         type: 3}
       propertyPath: m_EventMask.m_Bits
-      value: 51
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58f2ea2a3000de041af42d9d904ce27b, type: 3}
@@ -2209,13 +2209,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 277ce2425d8a3154dbfe9d5df6bbc5c3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 2
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -4365,7 +4365,7 @@ PrefabInstance:
     - target: {fileID: 7011079083256203282, guid: 98b97947807e8df48ba67b78b268cccf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7011079083256203282, guid: 98b97947807e8df48ba67b78b268cccf,
         type: 3}
@@ -6775,7 +6775,7 @@ PrefabInstance:
     - target: {fileID: 8043920050701562796, guid: 82acf0c3a04811a4ab05221aa32b3804,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8043920050701562796, guid: 82acf0c3a04811a4ab05221aa32b3804,
         type: 3}
@@ -10536,10 +10536,10 @@ Transform:
   - {fileID: 1722511417}
   - {fileID: 226851173}
   - {fileID: 1631749457}
-  - {fileID: 495633722}
-  - {fileID: 2083426549}
   - {fileID: 2132973420}
   - {fileID: 2140951963}
+  - {fileID: 495633722}
+  - {fileID: 2083426549}
   - {fileID: 1843976305}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -11295,8 +11295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222affe85c283c146a8da1e2474168d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inhaleSound: {fileID: 8300000, guid: b39972e39e4d33848b09bc7e15d1b24b, type: 3}
-  exhaleSound: {fileID: 8300000, guid: d2ba3ec457ff9b54482999c1805af9ec, type: 3}
   InhaleSource: {fileID: 2132973421}
   ExhaleSource: {fileID: 2140951964}
   inhaleTime: 2
@@ -15262,7 +15260,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 41e33d4bde9f6904ab68cc0b5ada8a76,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 41e33d4bde9f6904ab68cc0b5ada8a76,
         type: 3}
@@ -15508,7 +15506,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420143484}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2132973421
 AudioSource:
@@ -15528,7 +15526,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -15635,7 +15633,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420143484}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2140951964
 AudioSource:
@@ -15655,7 +15653,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

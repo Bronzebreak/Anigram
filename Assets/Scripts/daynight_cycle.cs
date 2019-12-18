@@ -26,6 +26,7 @@ public class daynight_cycle : MonoBehaviour
     public Light moon;
     public Gradient sunset;
     public Gradient skybox;
+    public Gradient fog;
 
     public void FullCircle()
     {
@@ -71,6 +72,7 @@ public class daynight_cycle : MonoBehaviour
             RenderSettings.skybox.SetColor("_Tint", skybox.Evaluate(currentTimeOfDay));
             RenderSettings.skybox.SetFloat("_Exposure", .4f);
             RenderSettings.skybox.SetFloat("_Rotation", -300*currentTimeOfDay);
+            RenderSettings.fogColor = fog.Evaluate(currentTimeOfDay);
         }
     }
 

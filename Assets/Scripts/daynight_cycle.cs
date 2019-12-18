@@ -25,6 +25,7 @@ public class daynight_cycle : MonoBehaviour
     float sunInitialIntensity;
     public Light moon;
     public Gradient sunset;
+    public Gradient skybox;
 
     public void FullCircle()
     {
@@ -65,6 +66,12 @@ public class daynight_cycle : MonoBehaviour
         }
         //breathingSource.pitch = (1.1f - (timeSinceLaunch / (secondsInFullDay ))) ;
         sun.color = sunset.Evaluate(currentTimeOfDay);
+        if (RenderSettings.skybox.HasProperty("_Tint"))
+        {
+            RenderSettings.skybox.SetColor("_Tint", skybox.Evaluate(currentTimeOfDay));
+            RenderSettings.skybox.SetFloat("_Exposure", .4f);
+            RenderSettings.skybox.SetFloat("_Rotation", -300*currentTimeOfDay);
+        }
     }
 
     void UpdateSun()

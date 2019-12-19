@@ -36,9 +36,11 @@ public class Framerate : MonoBehaviour
 
         text.text = averageFPS.ToString("F1");
 
+        /*
         print("fpsSampleRange" + fpsSampleRange);
         print("previousSampleRange" + previousFPSvalues);
         print("unscaledDeltaTime" + Time.unscaledDeltaTime);
         print("averageFPS" + averageFPS);
+        */
     }
 }

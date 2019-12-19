@@ -22,7 +22,6 @@ public class daynight_cycle : MonoBehaviour
     [HideInInspector]
     public float timeMultiplier = 1f;
     float sunInitialIntensity;
-    public Light moon;
     public Gradient sunset;
     public Gradient skybox;
     public Gradient fog;
@@ -58,6 +57,7 @@ public class daynight_cycle : MonoBehaviour
             RenderSettings.skybox.SetFloat("_Exposure", .4f);
             RenderSettings.skybox.SetFloat("_Rotation", -300*currentTimeOfDay);
             RenderSettings.fogColor = fog.Evaluate(currentTimeOfDay);
+            RenderSettings.ambientLight = skybox.Evaluate(currentTimeOfDay);
         }
 
         if (currentTimeOfDay >= .73f && !ending)

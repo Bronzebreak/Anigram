@@ -10976,15 +10976,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222affe85c283c146a8da1e2474168d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondsInFullDay: 6
+  timeMultiplier: 1
+  currentTimeOfDay: 0
   InhaleSource: {fileID: 1844894526}
   ExhaleSource: {fileID: 66274082}
   inhaleTime: 2
   exhaleTime: 4
   breathDelay: 0.3
   sun: {fileID: 1814096326}
-  secondsInFullDay: 6
-  currentTimeOfDay: 0
-  timeMultiplier: 1
   sunset:
     serializedVersion: 2
     key0: {r: 1, g: 0.96335274, b: 0.5235849, a: 1}

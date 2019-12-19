@@ -7,68 +7,44 @@ using Liminal.Core.Fader;
 
 public class daynight_cycle : MonoBehaviour
 {
-    public AudioSource InhaleSource;
-    public AudioSource ExhaleSource;
-    public float inhaleTime = 2f; // initial time of the inhale cycle
-    public float exhaleTime = 4f; // initial time of exhale cycle
-    public float breathDelay = 0.3f; // delay between inhale and exhale
-    float timeSinceLaunch; // time since the start of the program
-
-    // day night cycle variables
-    public Light sun;
+    #region Time
+    float timeSinceLaunch;
     public float secondsInFullDay = 1200f;
-    [Range(0, 1)]
-    public float currentTimeOfDay = 0;
     [HideInInspector]
     public float timeMultiplier = 1f;
+    [Range(0, 1)]
+    public float currentTimeOfDay = 0;
+    #endregion
+
+    #region Breathing
+    public AudioSource InhaleSource;
+    public AudioSource ExhaleSource;
+    public float inhaleTime = 2f;
+    public float exhaleTime = 4f;
+    public float breathDelay = 0.3f;
+    #endregion
+
+    #region Lighting
+    public Light sun;
     float sunInitialIntensity;
     public Gradient sunset;
     public Gradient skybox;
     public Gradient fog;
-    bool ending;
+    #endregion
 
-    public void FullCircle()
-    {
-        StartCoroutine(Breathing()); // starts inhale exghale cycle
-    }
+    bool ending;
 
     void Start()
     {
         sunInitialIntensity = sun.intensity;
-        FullCircle(); // calls the function at the begining of the run
+        StartCoroutine(Breathing());
     }
 
     void Update()
     {
-        timeSinceLaunch = Time.realtimeSinceStartup; // sets timne to the runtime of the programm
-        UpdateSun();
-        currentTimeOfDay = (0.45f + (Time.realtimeSinceStartup / secondsInFullDay)) * timeMultiplier;
+        //Keep track of time since the start of program.
+        timeSinceLaunch = Time.time;
 
-        if (currentTimeOfDay >= 1)
-        {
-            currentTimeOfDay -= 1;
-        }
-
-        sun.color = sunset.Evaluate(currentTimeOfDay);
-
-        if (RenderSettings.skybox.HasProperty("_Tint"))
-        {
-            RenderSettings.skybox.SetColor("_Tint", skybox.Evaluate(currentTimeOfDay));
-            RenderSettings.skybox.SetFloat("_Exposure", .4f);
-            RenderSettings.skybox.SetFloat("_Rotation", -300*currentTimeOfDay);
-            RenderSettings.fogColor = fog.Evaluate(currentTimeOfDay);
-            RenderSettings.ambientLight = skybox.Evaluate(currentTimeOfDay);
-        }
-
-        if (currentTimeOfDay >= .73f && !ending)
-        {
-            ending = true;
-            EndItAll();
-        }
-    }
-
-    void UpdateSun()
-    {
         sun.transform.localRotation = Quaternion.Euler((currentTimeOfDay * 360f) - 90, 170, 0);
 
         float intensityMultiplier = 1;
@@ -88,6 +64,26 @@ public class daynight_cycle : MonoBehaviour
         }
 
         sun.intensity = sunInitialIntensity * intensityMultiplier;
+
+        currentTimeOfDay = (0.45f + (Time.time / secondsInFullDay)) * timeMultiplier;
+
+        if (currentTimeOfDay >= 1)
+        {
+            currentTimeOfDay -= 1;
+        }
+
+        sun.color = sunset.Evaluate(currentTimeOfDay);
+        RenderSettings.skybox.SetColor("_Tint", skybox.Evaluate(currentTimeOfDay));
+        RenderSettings.skybox.SetFloat("_Exposure", .4f);
+        RenderSettings.skybox.SetFloat("_Rotation", -300*currentTimeOfDay);
+        RenderSettings.fogColor = fog.Evaluate(currentTimeOfDay);
+        RenderSettings.ambientLight = skybox.Evaluate(currentTimeOfDay);
+
+        if (currentTimeOfDay >= .73f && !ending)
+        {
+            ending = true;
+            EndExperience();
+        }
     }
 
     IEnumerator Breathing()
@@ -120,7 +116,7 @@ public class daynight_cycle : MonoBehaviour
         yield break;
     }
 
-    IEnumerator EndItAll()
+    IEnumerator EndExperience()
     {
         var fader = ScreenFader.Instance;
         fader.FadeTo(Color.black, 2.0f);

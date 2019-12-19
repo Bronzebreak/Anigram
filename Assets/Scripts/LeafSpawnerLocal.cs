@@ -58,19 +58,19 @@ public class LeafSpawnerLocal : MonoBehaviour
             StorePositions();
             currentMode = BreathingMode.inhaling;
             VariateRandomly();
-            yield return new WaitForSecondsRealtime(timeOverlord.inhaleTime);
+            yield return new WaitForSeconds(timeOverlord.inhaleTime);
             StorePositions();
             currentMode = BreathingMode.exhaleDelay;
             VariateRandomly();
-            yield return new WaitForSecondsRealtime(timeOverlord.breathDelay);
+            yield return new WaitForSeconds(timeOverlord.breathDelay);
             StorePositions();
             currentMode = BreathingMode.exhaling;
             VariateRandomly();
-            yield return new WaitForSecondsRealtime(timeOverlord.exhaleTime);
+            yield return new WaitForSeconds(timeOverlord.exhaleTime);
             StorePositions();
             currentMode = BreathingMode.inhaleDelay;
             VariateRandomly();
-            yield return new WaitForSecondsRealtime(timeOverlord.breathDelay);
+            yield return new WaitForSeconds(timeOverlord.breathDelay);
         }
     }
 

@@ -84,66 +84,76 @@ float _Metallic;
 
 //----------------------------------------------
 
-struct Input {
-float2 uv_MainTex;
-float2 uv_BumpMap;
-float3 worldRefl;
-float4 screenPos;
-float eyeDepth;
-float3 viewDir;
-INTERNAL_DATA
+struct Input 
+{
+	float2 uv_MainTex;
+	float2 uv_BumpMap;
+	float3 worldRefl;
+	float4 screenPos;
+	float eyeDepth;
+	float3 viewDir;
+	INTERNAL_DATA
 };
 
 //----------------------------------------------
 
-void vert(inout appdata_full v, out Input o) {
-UNITY_INITIALIZE_OUTPUT(Input, o);
-COMPUTE_EYEDEPTH(o.eyeDepth);
-}
+	void vert(inout appdata_full v, out Input o) {
+		UNITY_INITIALIZE_OUTPUT(Input, o);
+		COMPUTE_EYEDEPTH(o.eyeDepth);
+	}
 
 //----------------------------------------------
 
-void surf(Input IN, inout SurfaceOutputStandard o) {
+	void surf(Input IN, inout SurfaceOutputStandard o) 
+	{
+		float2 uvnh = IN.uv_BumpMap;
+		uvnh.xy += float2(_WaterLocalUvNX, _WaterLocalUvNZ) * -_ReverseFlow;
 
-float2 uvnh = IN.uv_BumpMap;
-uvnh.xy += float2(_WaterLocalUvNX, _WaterLocalUvNZ) * -_ReverseFlow;
+		float h = tex2D(_ParallaxMap, uvnh * _ParallaxScale).r;
 
-float h = tex2D(_ParallaxMap, uvnh * _ParallaxScale).r;
+		float2 offset = ParallaxOffset(h, _Parallax, IN.viewDir);
+		IN.uv_MainTex -= offset;
+		IN.uv_BumpMap += offset;
 
-float2 offset = ParallaxOffset(h, _Parallax, IN.viewDir);
-IN.uv_MainTex -= offset;
-IN.uv_BumpMap += offset;
+		float2 uv = IN.uv_MainTex;
+		uv.xy += float2(_WaterLocalUvX, _WaterLocalUvZ);
 
-float2 uv = IN.uv_MainTex;
-uv.xy += float2(_WaterLocalUvX, _WaterLocalUvZ);
+		float2 uvd = IN.uv_MainTex;
+		uvd.xy += float2(_WaterLocalUvX, _WaterLocalUvZ) * _MainDetailFlow;
 
-float2 uvd = IN.uv_MainTex;
-uvd.xy += float2(_WaterLocalUvX, _WaterLocalUvZ) * _MainDetailFlow;
+		float2 uvn = IN.uv_BumpMap;
+		uvn.xy += float2(_WaterLocalUvNX, _WaterLocalUvNZ);
 
-float2 uvn = IN.uv_BumpMap;
-uvn.xy += float2(_WaterLocalUvNX, _WaterLocalUvNZ);
+		float2 uvnd = IN.uv_BumpMap;
+		uvnd.xy += float2(_WaterLocalUvNX, _WaterLocalUvNZ) * _NormalmapDetailSpeed;
 
-float2 uvnd = IN.uv_BumpMap;
-uvnd.xy += float2(_WaterLocalUvNX, _WaterLocalUvNZ) * _NormalmapDetailSpeed;
+		fixed4 tex = tex2D(_MainTex, uv) * _Color;
+		tex *= tex2D(_Detail, uvd * _MainDetailScale);
+		tex *= _IntensityMt;
+		o.Albedo = ((tex - 0.5) * _ContrastMt + 0.5).rgb;
 
-fixed4 tex = tex2D(_MainTex, uv) * _Color;
-tex *= tex2D(_Detail, uvd * _MainDetailScale);
-tex *= _IntensityMt;
-o.Albedo = ((tex - 0.5) * _ContrastMt + 0.5).rgb;
+		fixed3 normal = UnpackNormal(tex2D(_BumpMap, uvn));
+		normal.z *= _IntensityNm;
+		//normal += UnpackNormal(tex2D(_BumpMapDetail, uvnd * _NormalmapDetailScale)) * _IntensityNmDetail;
 
-fixed3 normal = UnpackNormal(tex2D(_BumpMap, uvn)) * _IntensityNm;
-normal += UnpackNormal(tex2D(_BumpMapDetail, uvnd * _NormalmapDetailScale)) * _IntensityNmDetail;
-normal -= UnpackNormal(tex2D(_BumpMapDetail, (uv + uvnd) * 2 * _MicrowaveScale)) * _IntensityMicrowave;
-o.Normal = normalize(normal / 3);
+		fixed3 detail = UnpackNormal(tex2D(_BumpMapDetail, uvnd * _NormalmapDetailScale));
+		detail.z *= _IntensityNmDetail;
 
-float rawZ = SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(IN.screenPos + 0.0001));
-float fade = saturate(_SoftFactor * (LinearEyeDepth(rawZ) - IN.eyeDepth));
-o.Alpha = _Color.a * fade;
+		// normal -= UnpackNormal(tex2D(_BumpMapDetail, (uv + uvnd) * 2 * _MicrowaveScale)) * _IntensityMicrowave;
+		// o.Normal = normalize(normal);
+		o.Normal = normalize(normal + detail);
 
-o.Metallic = _Metallic;
-o.Smoothness = _Glossiness;
+		/*
+		float rawZ = SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(IN.screenPos + 0.0001));
+		float fade = saturate(_SoftFactor * (LinearEyeDepth(rawZ) - IN.eyeDepth));
+		o.Alpha = _Color.a * fade;
+		*/
 
-}
+		o.Alpha = tex.a;
+		o.Metallic = _Metallic;
+		o.Smoothness = _Glossiness;
+
+	}
 
 //----------------------------------------------
 

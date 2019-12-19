@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Reagan.unity
     guid: a0b1e35cc0ff6ec48b72dea54723a8a6
   - enabled: 1
-    path: Assets/Scenes/Reagan2.unity
+    path: Assets/Scenes/Anigram.unity
     guid: fd3a982ade77b1a4798bf508f87dbb56
   m_configObjects: {}
